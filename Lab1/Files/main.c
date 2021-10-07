@@ -1,16 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define N 2 /// order of the filter 
-#define NB 8  /// number of bits
+#define N 1 /// order of the filter
+#define NB 14  /// number of bits
 
-const int b0 = 8; /// coefficient b0
-const int b[N]={17, 8}; /// b array
-const int a[N]={-147, 52}; /// a array
+const int b0 = 3447; /// coefficient b0
+const int b[N]={3447}; /// b array
+const int a[N+2]={1, 8192, 1298}; /// a array
 
 /// Perform fixed point filtering assuming direct form II
-///\param x is the new input sample
-///\return the new output sample
+/// x is the new input sample
+/// returns the new output sample
 int myfilter(int x)
 {
   static int sw[N]; /// w shift register
@@ -38,15 +38,15 @@ int myfilter(int x)
   }
 
   /// compute intermediate value (w) and output sample
-  w = x + fb;
-  y = (w*b0) >> (NB-1);
+  w = x - fb;
+  y = (w*b[0]) >> (NB-1);
   y += ff;
 
   /// update the shift register
   for (i=N-1; i>0; i--)
     sw[i] = sw[i-1];
   sw[0] = w;
- 
+
   return y;
 }
 
@@ -69,7 +69,7 @@ int main (int argc, char **argv)
   fp_in = fopen(argv[1], "r");
   if (fp_in == NULL)
   {
-    printf("Error: cannot open %s\n");
+    printf("Error: cannot open %s\n", argv[1]);
     exit(2);
   }
   fp_out = fopen(argv[2], "w");
