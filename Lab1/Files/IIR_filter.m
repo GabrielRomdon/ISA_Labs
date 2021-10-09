@@ -36,20 +36,23 @@ plot(tt, y, 'c--o');
 legend('x1', 'x2', 'x', 'y')
 
 figure
-file = load('resultsc.txt');
-%file = file/max(file);
-plot(tt, file, 'blue');
+filec = load('resultsc.txt');
+plot(tt, filec, 'blue');
+%filec = filec/(2^(nb-1));
+
 hold on
-file = load('resultsm.txt');
-%file = file/max(file);
-plot(tt, file, 'red');
+filem = load('resultsm.txt');
+%filem = filem/(2^(nb-1));
+plot(tt, filem, 'red');
 
 legend('c', 'm')
 
-file = load('samples.txt');
-file = file/max(file);
-plot(tt, file, 'g--o');
+files = load('samples.txt');
+%files = files/max(file);
+plot(tt, files, 'g--o');
 
+figure
+thd(filec)
 
 %% quantize input and output
 xq=floor(x*2^(nb-1));

@@ -6,7 +6,7 @@
 
 const int b0 = 3447; /// coefficient b0
 const int b[N]={3447}; /// b array
-const int a[N+2]={1, 8192, 1298}; /// a array
+const int a[N]={1298}; /// a array (*******removed the minus bc of different notation)
 
 /// Perform fixed point filtering assuming direct form II
 /// x is the new input sample
@@ -33,13 +33,19 @@ int myfilter(int x)
   ff = 0;
   for (i=0; i<N; i++)
   {
+    printf("sw[i]*a[i] = %d\n", (sw[i]*a[i]));
+    printf("sw[i]*b[i] = %d\n", (sw[i]*b[i]));
+    printf("(sw[i]*a[i]) >> (NB-1) = %d\n", (sw[i]*a[i]) >> (NB-1));
+    printf("(sw[i]*b[i]) >> (NB-1) = %d\n", (sw[i]*b[i]) >> (NB-1));
     fb -= (sw[i]*a[i]) >> (NB-1);
     ff += (sw[i]*b[i]) >> (NB-1);
+    printf("fb = %d\n", fb);
+    printf("ff = %d\n", ff);
   }
 
   /// compute intermediate value (w) and output sample
   w = x - fb;
-  y = (w*b[0]) >> (NB-1);
+  y = (w*b0) >> (NB-1);
   y += ff;
 
   /// update the shift register
