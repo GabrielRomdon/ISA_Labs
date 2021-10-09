@@ -19,18 +19,26 @@ end IIR_FILTER;
 architecture BEHAVIORAL of IIR_FILTER is 
 begin
 
+signal w_past, w : std_logic_vecor (nb-1 downto 0);
 filter : process(clk)
 	variable temp : std_logic_vector(nb-1 downto 0);
+
 	if(clk' event and clk='1') then	--for now SYNCR RESET SIGNAL
 		if(RST_n ='0') then
 		--model reset behaviour
- 			
+ 			VOUT <= '0';
+			DOUT <= (others =>'0');
 		--distinguish the two cases in which a new input sample is available (Vin=1) or not
 		elsif (VIN='1') then
 			--perform the task;normal operation of the filter
+			w_past <= w;
+			w <= (DIN + w_past*a1); --with a1 negative
+			DOUT <= b0*w+b1*w_past;
+			VOUT <=1;	
 			
 		elsif (VIN='0') then 
-			--leave the output to previous value??
+			--leave the output to previous value
+			--do nothing, leave VOUT to one or not??
 		end if;
 		
 	end if;
