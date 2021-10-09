@@ -5,8 +5,10 @@ entity IIR_FILTER is
 		VIN : in std_logic;
 		RST_n : in std_logic;
 		CLK : in std_logic;
-		ai : in my_array
-		bi : in my_array; --define my_array into a package as an array of N elements of type std_logic_vector(nb-1 downto 0), where nb is defined in the package itself
+		a0 : in std_logic_vector(nb-1 downto 0);
+		a1 : in std_logic_vector(nb-1 downto 0);
+		b0 : in std_logic_vector(nb-1 downto 0);
+		b1 : in std_logic_vector(nb-1 downto 0);
 		DOUT : out std_logic_vector(nb-1 downto 0);
 		VOUT : out std_logic;
 	);
