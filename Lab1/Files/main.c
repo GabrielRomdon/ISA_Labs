@@ -3,6 +3,7 @@
 
 #define N 1 /// order of the filter
 #define NB 14  /// number of bits
+#define R 7  /// number of bits
 
 const int b0 = 3447; /// coefficient b0
 const int b[N]={3447}; /// b array
@@ -33,19 +34,13 @@ int myfilter(int x)
   ff = 0;
   for (i=0; i<N; i++)
   {
-    printf("sw[i]*a[i] = %d\n", (sw[i]*a[i]));
-    printf("sw[i]*b[i] = %d\n", (sw[i]*b[i]));
-    printf("(sw[i]*a[i]) >> (NB-1) = %d\n", (sw[i]*a[i]) >> (NB-1));
-    printf("(sw[i]*b[i]) >> (NB-1) = %d\n", (sw[i]*b[i]) >> (NB-1));
-    fb -= (sw[i]*a[i]) >> (NB-1);
-    ff += (sw[i]*b[i]) >> (NB-1);
-    printf("fb = %d\n", fb);
-    printf("ff = %d\n", ff);
+    fb -= (sw[i]*a[i]) >> (NB+R-1);
+    ff += (sw[i]*b[i]) >> (NB+R-1);
   }
 
   /// compute intermediate value (w) and output sample
   w = x - fb;
-  y = (w*b0) >> (NB-1);
+  y = (w*b0) >> (NB+R-1);
   y += ff;
 
   /// update the shift register
@@ -53,7 +48,7 @@ int myfilter(int x)
     sw[i] = sw[i-1];
   sw[0] = w;
 
-  return y;
+  return y << (R);
 }
 
 int main (int argc, char **argv)
