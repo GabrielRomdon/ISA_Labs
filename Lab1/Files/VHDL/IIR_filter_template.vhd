@@ -25,7 +25,8 @@ end IIR_FILTER;
 architecture BEHAVIORAL of IIR_FILTER is 
 begin
 
-signal w_past, w : std_logic_vecor (nb-1 downto 0);
+signal w_past, w, fb_tmp, ff_tmp_0, ff_tmp_1 : std_logic_vecor (nb-1 downto 0);
+signal fb, ff : std_logic_vecor (nb-r-1 downto 0);
 
 filter : process(clk)
 
@@ -38,8 +39,13 @@ filter : process(clk)
 		elsif (VIN='1') then
 			--perform the task;normal operation of the filter
 			w_past <= w;
-			w <= (DIN + w_past*a1); --with a1 negative
-			DOUT <= b0*w+b1*w_past;
+			fb_tmp <= w_past*a1;
+			fb <= fb_tmp(nb-1 downto nb-(nb-r-1));
+			w <= (DIN + fb); --with a1 negative
+			ff_tmp_0 <= b0*w;
+			ff_tmp_1 <= b1*w_past;
+			ff <= ff_tmp_0(nb-1 downto nb-(nb-r-1)) + ff_tmp_1(nb-1 downto nb-(nb-r-1));
+			DOUT <= ff;
 			VOUT <= '1';
 			
 		elsif (VIN='0') then 
