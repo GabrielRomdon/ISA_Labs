@@ -16,19 +16,21 @@ entity IIR_FILTER is
 		b0 : in std_logic_vector(nb-1 downto 0);
 		b1 : in std_logic_vector(nb-1 downto 0);
 		DOUT : out std_logic_vector(nb-1 downto 0);
-		VOUT : out std_logic;
+		VOUT : out std_logic
 	);
 
 
 end IIR_FILTER;
 
 architecture BEHAVIORAL of IIR_FILTER is 
+
+signal w_past, w : std_logic_vector (nb-1 downto 0) := (others => '0');
+signal fb_tmp, ff_tmp_0, ff_tmp_1  : std_logic_vector (nb*2-1 downto 0) := (others => '0');
+signal fb, ff : std_logic_vector (nb-r-1 downto 0) := (others => '0');
+signal zero_padding : std_logic_vector (r-1 downto 0) := (others => '0');
 begin
-
-signal w_past, w, fb_tmp, ff_tmp_0, ff_tmp_1 : std_logic_vecor (nb-1 downto 0);
-signal fb, ff : std_logic_vecor (nb-r-1 downto 0);
-
 filter : process(clk)
+	begin
 
 	if(clk' event and clk='1') then	--for now SYNCR RESET SIGNAL
 		if(RST_n ='0') then
@@ -40,12 +42,12 @@ filter : process(clk)
 			--perform the task;normal operation of the filter
 			w_past <= w;
 			fb_tmp <= w_past*a1;
-			fb <= fb_tmp(nb-1 downto nb-(nb-r-1));
+			fb <= fb_tmp(nb*2-1 downto nb*2-(nb-r));
 			w <= (DIN + fb); --with a1 negative
 			ff_tmp_0 <= b0*w;
 			ff_tmp_1 <= b1*w_past;
-			ff <= ff_tmp_0(nb-1 downto nb-(nb-r-1)) + ff_tmp_1(nb-1 downto nb-(nb-r-1));
-			DOUT <= ff;
+			ff <= ff_tmp_0(nb*2-1 downto nb*2-(nb-r)) + ff_tmp_1(nb*2-1 downto nb*2-(nb-r));
+			DOUT <= ff & zero_padding;
 			VOUT <= '1';
 			
 		elsif (VIN='0') then 

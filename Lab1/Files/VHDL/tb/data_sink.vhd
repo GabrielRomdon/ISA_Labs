@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_textio.all;
+use work.myPkg.all;
 
 library std;
 use std.textio.all;
@@ -12,7 +13,7 @@ entity data_sink is
     CLK   : in std_logic;
     RST_n : in std_logic;
     VIN   : in std_logic;
-    DIN   : in std_logic_vector(15 downto 0));
+    DIN   : in std_logic_vector(14-1 downto 0));
 end data_sink;
 
 architecture beh of data_sink is

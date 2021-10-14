@@ -1,17 +1,19 @@
 //`timescale 1ns
-import myPkg;
+//import myPkg;
+
+// nb -> 14
 
 module tb_fir ();
 
    wire CLK_i;
    wire RST_n_i;
-   wire [nb-1:0] DIN_i;
+   wire [14-1:0] DIN_i;
    wire VIN_i;
-   wire [nb-1:0] H0_i;	//a0
-   wire [nb-1:0] H1_i;	//a1
-   wire [nb-1:0] H2_i;	//b0
-   wire [nb-1:0] H3_i;	//b1
-   wire [nb-1:0] DOUT_i;
+   wire [14-1:0] H0_i;	//a0
+   wire [14-1:0] H1_i;	//a1
+   wire [14-1:0] H2_i;	//b0
+   wire [14-1:0] H3_i;	//b1
+   wire [14-1:0] DOUT_i;
    wire VOUT_i;
    wire END_SIM_i;
 
@@ -29,7 +31,7 @@ module tb_fir ();
 		 .H3(H3_i),
 		 .END_SIM(END_SIM_i));
 
-   myfir UUT(.CLK(CLK_i),
+   IIR_FILTER UUT(.CLK(CLK_i),
 	     .RST_n(RST_n_i),
 	     .DIN(DIN_i),
          .VIN(VIN_i),
