@@ -8,7 +8,7 @@
 const int b0 = 3447; /// coefficient b0
 const int b[N]={3447}; /// b array
 const int a[N]={1298}; /// a array (*******removed the minus bc of different notation)
-
+FILE *fp, *fp1, *fp2;
 /// Perform fixed point filtering assuming direct form II
 /// x is the new input sample
 /// returns the new output sample
@@ -20,6 +20,7 @@ int myfilter(int x)
   int w; /// intermediate value (w)
   int y; /// output sample
   int fb, ff; /// feed-back and feed-forward results
+	
 
   /// clean the buffer
   if (first_run == 0)
@@ -36,13 +37,15 @@ int myfilter(int x)
   {
     fb -= (sw[i]*a[i]) >> (NB+R-1);
     ff += (sw[i]*b[i]) >> (NB+R-1);
+	fprintf(fp1,"%d\n", fb);
+	fprintf(fp2,"%d\n", ff);
   }
 
   /// compute intermediate value (w) and output sample
   w = x - fb;
   y = (w*b0) >> (NB+R-1);
   y += ff;
-
+fprintf(fp,"%d\n", w);
   /// update the shift register
   for (i=N-1; i>0; i--)
     sw[i] = sw[i-1];
@@ -55,6 +58,10 @@ int main (int argc, char **argv)
 {
   FILE *fp_in;
   FILE *fp_out;
+	
+	fp=fopen("w_val.txt", "w");
+	fp1=fopen("fb_val.txt", "w");
+	fp2=fopen("ff_val.txt", "w");
 
   int x;
   int y;
@@ -85,7 +92,9 @@ int main (int argc, char **argv)
 
   fclose(fp_in);
   fclose(fp_out);
-
+fclose (fp);
+fclose (fp1);
+fclose (fp2);
   return 0;
 
 }

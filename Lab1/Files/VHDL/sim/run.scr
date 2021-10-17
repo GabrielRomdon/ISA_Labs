@@ -1,0 +1,41 @@
+# source /software/scripts/init_msim6.2g
+
+# if [file exists work] {vdel -all}
+
+vlib work
+
+vcom -93 -work ./work ../src/pkg.vhd
+vcom -93 -work ./work ../tb/clk_gen.vhd
+vcom -93 -work ./work ../tb/data_maker_new.vhd
+vcom -93 -work ./work ../tb/data_sink.vhd
+vcom -93 -work ./work ../src/IIR_filter_template.vhd
+vlog -work ./work ../tb/tb_fir.v
+
+vsim work.tb_fir
+
+add wave /tb_fir/CLK_i
+add wave -noupdate -divider <NULL>
+add wave /tb_fir/RST_n_i
+add wave -noupdate -divider <NULL>
+add wave /tb_fir/VIN_i
+add wave -radix decimal /tb_fir/DIN_i
+#format
+add wave /tb_fir/VOUT_i
+add wave  -radix decimal /tb_fir/DOUT_i
+#format
+add wave -noupdate -divider <NULL>
+add wave -radix decimal /tb_fir/UUT/w
+add wave -radix decimal /tb_fir/UUT/w_past
+#format
+add wave -noupdate -divider <NULL>
+add wave -radix decimal /tb_fir/UUT/ff_tmp_0
+add wave -radix decimal /tb_fir/UUT/ff_tmp_1
+add wave -radix decimal /tb_fir/UUT/ff
+#format
+add wave -noupdate -divider <NULL>
+add wave -radix decimal /tb_fir/UUT/fb
+add wave -radix decimal /tb_fir/UUT/fb_tmp
+
+
+
+run 300ns

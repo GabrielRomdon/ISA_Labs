@@ -31,7 +31,7 @@ architecture beh of data_maker is
 begin  -- beh
 
   H0 <= conv_std_logic_vector(1,nb);	--a0
-  H1 <= conv_std_logic_vector(-1298,nb);	--a1
+  H1 <= conv_std_logic_vector(1298,nb);	--a1
   H2 <= conv_std_logic_vector(3447,nb);	--b0
   H3 <= conv_std_logic_vector(3447,nb);  --b1	
 

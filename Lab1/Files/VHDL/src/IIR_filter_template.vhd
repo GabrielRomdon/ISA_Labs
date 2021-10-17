@@ -1,6 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;
+--use ieee.std_logic_arith.all;
+use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_textio.all;
 use work.myPkg.all;
@@ -24,14 +25,26 @@ end IIR_FILTER;
 
 architecture BEHAVIORAL of IIR_FILTER is 
 
-signal w_past, w : std_logic_vector (nb-1 downto 0) := (others => '0');
-signal fb_tmp, ff_tmp_0, ff_tmp_1  : std_logic_vector (nb*2-1 downto 0) := (others => '0');
+signal w_past, w: std_logic_vector (nb downto 0) := (others => '0'); --the result of the sum could have a reminder that has to be taken into account
+signal fb_tmp, ff_tmp_0, ff_tmp_1  : std_logic_vector (nb*2 downto 0) := (others => '0');
 signal fb, ff : std_logic_vector (nb-r-1 downto 0) := (others => '0');
-signal zero_padding : std_logic_vector (r-1 downto 0) := (others => '0');
+signal zero_padding : std_logic_vector (r-1 downto 0):= (others => '0') ;
 begin
-filter : process(clk)
-	begin
 
+			fb_tmp <= std_logic_vector(signed(w_past)*signed(a1));
+			fb <= fb_tmp(nb*2-2 downto nb*2-2-(nb-r)+1); --b_tmp(nb*2-1 downto nb*2-(nb-r));
+			w <= std_logic_vector(signed(DIN(nb-1)& DIN) + signed(fb(nb-r-1) & fb)); --ovf can happen on nb bits, need nb+1!!
+			ff_tmp_0 <= std_logic_vector(signed(b0)*signed(w));
+			ff_tmp_1 <= std_logic_vector(signed(b1)*signed(w_past));
+			ff <= std_logic_vector(signed(ff_tmp_0(nb*2-2 downto nb*2-2-(nb-r)+1)) + signed(ff_tmp_1(nb*2-2 downto nb*2-2-(nb-r)+1)));
+			
+filter : process(clk)
+	
+	begin
+	
+	--fb_tmp <= (others => '0'); --doesn't work correctly without this initialization at every CC
+	--ff_tmp_0 <= (others => '0');
+	--ff_tmp_0 <= (others => '0');
 	if(clk' event and clk='1') then	--for now SYNCR RESET SIGNAL
 		if(RST_n ='0') then
 		--model reset behaviour
@@ -41,13 +54,7 @@ filter : process(clk)
 		elsif (VIN='1') then
 			--perform the task;normal operation of the filter
 			w_past <= w;
-			fb_tmp <= w_past*a1;
-			fb <= fb_tmp(nb*2-1 downto nb*2-(nb-r));
-			w <= (DIN + fb); --with a1 negative
-			ff_tmp_0 <= b0*w;
-			ff_tmp_1 <= b1*w_past;
-			ff <= ff_tmp_0(nb*2-1 downto nb*2-(nb-r)) + ff_tmp_1(nb*2-1 downto nb*2-(nb-r));
-			DOUT <= ff & zero_padding;
+			DOUT <=ff & zero_padding;
 			VOUT <= '1';
 			
 		elsif (VIN='0') then 
