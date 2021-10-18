@@ -27,16 +27,16 @@ architecture BEHAVIORAL of IIR_FILTER is
 
 signal w_past, w: std_logic_vector (nb downto 0) := (others => '0'); --the result of the sum could have a reminder that has to be taken into account
 signal fb_tmp, ff_tmp_0, ff_tmp_1  : std_logic_vector (nb*2 downto 0) := (others => '0');
-signal fb, ff : std_logic_vector (nb-r-1 downto 0) := (others => '0');
+signal fb, ff : std_logic_vector (nb-r-2 downto 0) := (others => '0');
 signal zero_padding : std_logic_vector (r-1 downto 0):= (others => '0') ;
 begin
 
 			fb_tmp <= std_logic_vector(signed(w_past)*signed(a1));
-			fb <= fb_tmp(nb*2-2 downto nb*2-2-(nb-r)+1); --b_tmp(nb*2-1 downto nb*2-(nb-r));
-			w <= std_logic_vector(signed(DIN(nb-1)& DIN) + signed(fb(nb-r-1) & fb)); --ovf can happen on nb bits, need nb+1!!
+			fb <= fb_tmp(nb*2-3 downto nb*2-2-(nb-r)+1); --b_tmp(nb*2-1 downto nb*2-(nb-r));
+			w <= std_logic_vector(signed(DIN(nb-1)& DIN) + signed(fb(nb-r-2) & fb)); --ovf can happen on nb bits, need nb+1!!
 			ff_tmp_0 <= std_logic_vector(signed(b0)*signed(w));
 			ff_tmp_1 <= std_logic_vector(signed(b1)*signed(w_past));
-			ff <= std_logic_vector(signed(ff_tmp_0(nb*2-2 downto nb*2-2-(nb-r)+1)) + signed(ff_tmp_1(nb*2-2 downto nb*2-2-(nb-r)+1)));
+			ff <= std_logic_vector(signed(ff_tmp_0(nb*2-3 downto nb*2-2-(nb-r)+1)) + signed(ff_tmp_1(nb*2-3 downto nb*2-2-(nb-r)+1)));--careful this could give ovf 7b+7b..NECESSARY TO MANAGE??SHOULD BE 8??
 			
 filter : process(clk)
 	
@@ -54,7 +54,7 @@ filter : process(clk)
 		elsif (VIN='1') then
 			--perform the task;normal operation of the filter
 			w_past <= w;
-			DOUT <=ff & zero_padding;
+			DOUT <=ff(nb-r-2) & ff & zero_padding;
 			VOUT <= '1';
 			
 		elsif (VIN='0') then 
