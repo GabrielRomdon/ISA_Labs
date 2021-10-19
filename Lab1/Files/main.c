@@ -35,10 +35,11 @@ int myfilter(int x)
   ff = 0;
   for (i=0; i<N; i++)
   {
-    fb -= (sw[i]*a[i]) >> (NB+R-1);
-    ff += (sw[i]*b[i]) >> (NB+R-1);
+    	fb -= (sw[i]*a[i]) >> (NB+R-1);
+    	ff += (sw[i]*b[i]) >> (NB+R-1);
 	fprintf(fp1,"%d\n", fb);
 	fprintf(fp2,"%d\n", ff);
+	printf("fb=%d\n", fb);
   }
 
   /// compute intermediate value (w) and output sample
