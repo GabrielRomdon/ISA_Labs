@@ -36,7 +36,7 @@ begin  -- beh
   H2 <= conv_std_logic_vector(3447,nb);	--b0
   H3 <= conv_std_logic_vector(3447,nb);  --b1	
   --H4 <= conv_std_logic_vector(1684804,nb_a); --a1^2
-	H4 <= conv_std_logic_vector(103,nb_a);
+	H4 <= conv_std_logic_vector(205,nb_a);
 
   process (CLK, RST_n)
     file fp_in : text open READ_MODE is "../samples.txt";
