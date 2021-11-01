@@ -1,0 +1,26 @@
+vlib work
+
+# Compile all relevant files
+vcom -93 -work ./work ../src/lookah_pkg.vhd
+vcom -93 -work ./work ../tb/clk_gen.vhd
+vcom -93 -work ./work ../tb/data_maker_new.vhd
+vcom -93 -work ./work ../tb/data_sink.vhd
+
+# Using the VHDL file from synthesis
+#vcom -93 -work ./work ../netlist/IIR_look_ahead.vhdl  
+# Using the Verilog file from synthesis
+vlog -work ./work ../netlist/IIR_look_ahead.v         
+
+vlog -work ./work ../tb/tb_fir.v
+
+# Use vsim command for the top-level module including library netlist and also delay information (sdf file)
+vsim work.tb_fir -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../netlist/IIR_look_ahead.sdf +nowarnTSCALE   # Using the file from synthesis
+
+# Save switching activity of UUT into a vcd file
+vcd file ../vcd/IIR_look_ahead_syn.vcd
+vcd add /tb_fir/UUT/*
+
+# Run for 2 us, since we have the EndOfSim signal then it's okay to run such long time
+run 2us
+
+exit

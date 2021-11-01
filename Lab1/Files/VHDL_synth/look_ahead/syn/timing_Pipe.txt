@@ -1,0 +1,121 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : IIR_FILTER
+Version: O-2018.06-SP4
+Date   : Sun Oct 31 20:49:11 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: w_1_reg[5] (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: ff_1_past_reg[6]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  IIR_FILTER         5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  w_1_reg[5]/CK (DFF_X1)                                  0.00       0.00 r
+  w_1_reg[5]/QN (DFF_X1)                                  0.06       0.06 f
+  U169/ZN (INV_X1)                                        0.07       0.13 r
+  mult_53/a[5] (IIR_FILTER_DW_mult_tc_1)                  0.00       0.13 r
+  mult_53/U459/ZN (XNOR2_X1)                              0.08       0.21 r
+  mult_53/U652/ZN (OAI22_X1)                              0.05       0.26 f
+  mult_53/U527/Z (XOR2_X1)                                0.08       0.34 f
+  mult_53/U528/Z (XOR2_X1)                                0.08       0.41 f
+  mult_53/U607/ZN (INV_X1)                                0.04       0.45 r
+  mult_53/U515/ZN (OAI222_X1)                             0.05       0.51 f
+  mult_53/U565/ZN (NAND2_X1)                              0.03       0.54 r
+  mult_53/U522/ZN (AND3_X1)                               0.06       0.60 r
+  mult_53/U640/ZN (OAI222_X1)                             0.05       0.65 f
+  mult_53/U579/ZN (NAND2_X1)                              0.03       0.68 r
+  mult_53/U518/ZN (AND3_X1)                               0.06       0.74 r
+  mult_53/U516/ZN (OAI222_X1)                             0.05       0.79 f
+  mult_53/U568/ZN (NAND2_X1)                              0.03       0.82 r
+  mult_53/U442/ZN (AND3_X2)                               0.05       0.87 r
+  mult_53/U638/ZN (OAI222_X1)                             0.05       0.93 f
+  mult_53/U575/ZN (NAND2_X1)                              0.04       0.96 r
+  mult_53/U462/ZN (AND3_X1)                               0.06       1.02 r
+  mult_53/U457/ZN (OAI222_X1)                             0.05       1.07 f
+  mult_53/U562/ZN (NAND2_X1)                              0.03       1.10 r
+  mult_53/U466/ZN (AND3_X1)                               0.06       1.16 r
+  mult_53/U636/ZN (OAI222_X1)                             0.05       1.21 f
+  mult_53/U587/ZN (NAND2_X1)                              0.03       1.24 r
+  mult_53/U498/ZN (AND3_X1)                               0.06       1.30 r
+  mult_53/U470/ZN (OAI222_X1)                             0.05       1.35 f
+  mult_53/U581/ZN (NAND2_X1)                              0.03       1.39 r
+  mult_53/U443/ZN (AND3_X2)                               0.06       1.45 r
+  mult_53/U634/ZN (OAI222_X1)                             0.05       1.49 f
+  mult_53/U505/ZN (NAND2_X1)                              0.04       1.53 r
+  mult_53/U446/ZN (NAND3_X1)                              0.04       1.57 f
+  mult_53/U512/ZN (NAND2_X1)                              0.04       1.61 r
+  mult_53/U481/ZN (NAND3_X1)                              0.04       1.64 f
+  mult_53/U535/ZN (NAND2_X1)                              0.04       1.68 r
+  mult_53/U469/ZN (NAND3_X1)                              0.04       1.72 f
+  mult_53/U477/ZN (NAND2_X1)                              0.04       1.75 r
+  mult_53/U480/ZN (NAND3_X1)                              0.04       1.79 f
+  mult_53/U546/ZN (NAND2_X1)                              0.04       1.83 r
+  mult_53/U547/ZN (NAND3_X1)                              0.04       1.86 f
+  mult_53/U551/ZN (NAND2_X1)                              0.03       1.89 r
+  mult_53/U553/ZN (NAND3_X1)                              0.03       1.92 f
+  mult_53/U517/ZN (XNOR2_X1)                              0.06       1.98 f
+  mult_53/U628/ZN (XNOR2_X1)                              0.05       2.03 f
+  mult_53/product[26] (IIR_FILTER_DW_mult_tc_1)           0.00       2.03 f
+  U191/ZN (AOI22_X1)                                      0.05       2.08 r
+  U343/ZN (INV_X1)                                        0.02       2.10 f
+  ff_1_past_reg[6]/D (DFF_X1)                             0.01       2.11 f
+  data arrival time                                                  2.11
+
+  clock MY_CLK (rise edge)                                2.22       2.22
+  clock network delay (ideal)                             0.00       2.22
+  clock uncertainty                                      -0.07       2.15
+  ff_1_past_reg[6]/CK (DFF_X1)                            0.00       2.15 r
+  library setup time                                     -0.04       2.11
+  data required time                                                 2.11
+  --------------------------------------------------------------------------
+  data required time                                                 2.11
+  data arrival time                                                 -2.11
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: DOUT_reg[7]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: DOUT[7] (output port)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  IIR_FILTER         5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  DOUT_reg[7]/CK (DFF_X1)                  0.00       0.00 r
+  DOUT_reg[7]/Q (DFF_X1)                   0.09       0.09 r
+  DOUT[7] (out)                            0.03       0.12 r
+  data arrival time                                   0.12
+
+  max_delay                                2.22       2.22
+  output external delay                    0.00       2.22
+  data required time                                  2.22
+  -----------------------------------------------------------
+  data required time                                  2.22
+  data arrival time                                  -0.12
+  -----------------------------------------------------------
+  slack (MET)                                         2.10
+
+
+1

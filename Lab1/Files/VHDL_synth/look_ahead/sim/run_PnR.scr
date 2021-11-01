@@ -1,0 +1,22 @@
+vlib work
+
+# Compile all relevant files
+vcom -93 -work ./work ../src/lookah_pkg.vhd
+vcom -93 -work ./work ../tb/clk_gen.vhd
+vcom -93 -work ./work ../tb/data_maker_new.vhd
+vcom -93 -work ./work ../tb/data_sink.vhd
+# Using the Verilog file from PnR
+vlog -work ./work ../innovus/IIR_FILTER.v             
+vlog -work ./work ../tb/tb_fir.v
+
+# Use vsim command for the top-level module including library netlist and also delay information (sdf file) # Using the file from PnR
+vsim work.tb_fir -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/UUT=../innovus/IIR_FILTER.sdf +nowarnTSCALE
+
+# Save switching activity of UUT into a vcd file
+vcd file ../vcd/IIR_look_ahead_pnr.vcd
+vcd add /tb_fir/UUT/*
+
+# Run for 2 us, since we have the EndOfSim signal then it's okay to run such long time
+run 2us
+
+exit
