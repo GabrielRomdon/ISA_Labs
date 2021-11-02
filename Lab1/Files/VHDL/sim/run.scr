@@ -38,4 +38,4 @@ add wave -radix decimal /tb_fir/UUT/fb_tmp
 
 
 
-run 1200ns
+run 2200ns
