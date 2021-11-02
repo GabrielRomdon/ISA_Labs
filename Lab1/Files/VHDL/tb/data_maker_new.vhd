@@ -48,10 +48,18 @@ begin  -- beh
       if not endfile(fp_in) then
         readline(fp_in, line_in);
         read(line_in, x);
-        DOUT <= conv_std_logic_vector(x, nb) after tco;
+		--additional instructionts to perform the behaviour with Vin=0
+		--add in samples.txt these two values in whatever position
+		if (x=-1277 or x=-1290) then
+			VOUT<='0' after tco;
+			DOUT <= conv_std_logic_vector(x, nb) after tco;
+	        sEndSim <= '0' after tco; 
+		else        
+		DOUT <= conv_std_logic_vector(x, nb) after tco;
         VOUT <= '1' after tco;
         sEndSim <= '0' after tco;
-      else
+    	end if;  
+		else
         VOUT <= '0' after tco;        
         sEndSim <= '1' after tco;
       end if;
