@@ -45,7 +45,7 @@ begin
 	fb_1 <= fb_tmp_1(24 downto 20);
 	fb_tmp_0 <= std_logic_vector(signed(a1_2) *signed(w_past));	
 	fb_0 <= fb_tmp_0(21 downto 21-nb_fb+2);
-	fb <= std_logic_vector (signed(fb_0_past (nb_fb-2)fb_0_past) + signed(fb_1_past));	
+	fb <= std_logic_vector (signed(fb_0_past (nb_fb-2) & fb_0_past) + signed(fb_1_past));	
 	
 	--ff_tmp_0 <= std_logic_vector(signed(w_0) * signed(b0)); --pipeline
 	ff_tmp_0 <= std_logic_vector(signed(w) * signed(b0));
