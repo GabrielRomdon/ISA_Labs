@@ -30,12 +30,12 @@ architecture tb of tb_mul_pipe is
 		END_SIM : out std_logic);
 	end component;
 	
-	entity data_sink is
+	component data_sink
 	  port (
 		CLK   : in std_logic;
 		RST_n : in std_logic;
 		DIN   : in std_logic_vector(31 downto 0));
-	end data_sink;
+	end component;
 
 	component FPmul
 	   port( 

@@ -20,22 +20,23 @@ architecture beh of data_sink is
   
   signal prod_file			: std_logic_vector(31 downto 0);
   signal data_valid 		: std_logic;
-  signal data_valid_vector	: std_logic_vector(4 downto 0);
+  signal data_valid_vector	: std_logic_vector(3 downto 0);
 
 begin  -- beh
 
   process (CLK, RST_n)
     file fp_prod : text open READ_MODE is "./fp_prod.hex";
     variable line_in : line;
-    variable x : integer;
+    variable x : std_logic_vector(31 downto 0);
   begin  -- process
     if RST_n = '0' then                 -- asynchronous reset (active low)
       null;
     elsif CLK'event and CLK = '1' then  -- rising clock edge
-      if (data_valid = '1' and not endfile(fp_in))  then
+      if (data_valid = '1' and not endfile(fp_prod))  then
 	    readline(fp_prod, line_in);
-        read(line_in, x);
-		prod_file <= conv_std_logic_vector(x, 32) after tco;
+        hread(line_in, x);
+		--prod_file <= conv_std_logic_vector(x, 32) after tco;
+		prod_file <= x after tco;
 		assert (prod_file = DIN) report "The product does not correspond to the expected value" severity error;
 	  end if;
     end if;
@@ -47,10 +48,10 @@ begin  -- beh
       data_valid_vector <= (others => '0') after tco;
     elsif CLK'event and CLK = '1' then  -- rising clock edge
       data_valid_vector(0) <= '1' after tco;
-      data_valid_vector(4 downto 1) <= data_valid_vector(3 downto 0) after tco;
+      data_valid_vector(3 downto 1) <= data_valid_vector(2 downto 0) after tco;
     end if;
   end process;
   
-  data_valid <= data_valid_vector(4);
+  data_valid <= data_valid_vector(3);
 
 end beh;
