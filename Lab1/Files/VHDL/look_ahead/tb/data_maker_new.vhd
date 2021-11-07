@@ -18,7 +18,7 @@ entity data_maker is
     H1      : out std_logic_vector(nb-1 downto 0);
     H2      : out std_logic_vector(nb-1 downto 0);
     H3      : out std_logic_vector(nb-1 downto 0);
-	H4		: out std_logic_vector(nb_a -1 downto 0);
+    H4      : out std_logic_vector(nb_a -1 downto 0);
     END_SIM : out std_logic);
 end data_maker;
 
@@ -35,8 +35,7 @@ begin  -- beh
   H1 <= conv_std_logic_vector(1298,nb);	--a1
   H2 <= conv_std_logic_vector(3447,nb);	--b0
   H3 <= conv_std_logic_vector(3447,nb);  --b1	
-  --H4 <= conv_std_logic_vector(1684804,nb_a); --a1^2
-	H4 <= conv_std_logic_vector(205,nb_a);
+  H4 <= conv_std_logic_vector(205,nb_a); -- a1^2
 
   process (CLK, RST_n)
     file fp_in : text open READ_MODE is "../samples.txt";
@@ -51,9 +50,17 @@ begin  -- beh
       if not endfile(fp_in) then
         readline(fp_in, line_in);
         read(line_in, x);
-        DOUT <= conv_std_logic_vector(x, nb) after tco;
-        VOUT <= '1' after tco;
-        sEndSim <= '0' after tco;
+	--additional instructionts to perform the behaviour with Vin=0
+	--add in samples.txt these two values in whatever position
+	if (x=-1277 or x=-1290) then
+		VOUT<='0' after tco;
+		DOUT <= conv_std_logic_vector(x, nb) after tco;
+		sEndSim <= '0' after tco; 
+	else        
+        	DOUT <= conv_std_logic_vector(x, nb) after tco;
+        	VOUT <= '1' after tco;
+        	sEndSim <= '0' after tco;
+	end if;
       else
         VOUT <= '0' after tco;        
         sEndSim <= '1' after tco;

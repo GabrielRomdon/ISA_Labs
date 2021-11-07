@@ -40,5 +40,5 @@ add wave -radix decimal /tb_fir/UUT/fb_tmp_0
 add wave -radix decimal /tb_fir/UUT/fb_tmp_1
 
 
-run 2us
+run 2.1us
 exit

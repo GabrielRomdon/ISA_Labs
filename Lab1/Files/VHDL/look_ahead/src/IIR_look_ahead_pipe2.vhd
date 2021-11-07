@@ -32,6 +32,7 @@ signal fb_0 : std_logic_vector(nb_fb-2 downto 0);
 signal fb_tmp_1 : std_logic_vector (nb*2-1 downto 0);
 signal fb_1 : std_logic_vector (4 downto 0); --could be also nb-r bits, but 5 are already sufficient to store the result
 signal fb, fb_past : std_logic_vector (nb_fb-1 downto 0);
+signal VOUT_pre1, VOUT_pre2: std_logic;
 
 constant zero_padding : std_logic_vector (r-1 downto 0) := (others => '0');
 begin
@@ -62,8 +63,6 @@ begin
 
 	if(clk='1' and clk' event) then
 		if (RST_n ='0') then
-			DOUT <= (others =>'0');
-			VOUT <= '0';
 			w_past <= (others =>'0');
 			w_0 <= (others =>'0');
 			w_1 <= (others =>'0');
@@ -78,20 +77,51 @@ begin
 			ff_0_past <= ff_0;
 			ff_1_past <= ff_1;
 			fb_past <= fb;
-		
-			DOUT <= ff & zero_padding;
-			VOUT <='1';
-
-
-		elsif ( VIN ='0') then
-			VOUT <='0'; --CHECK THE MODEL OF THIS BEHAVIOR
 		end if;
 	end if;	
-
-
-
 end process;
 
+-- Pipeline register controlled by a delayed version of the VIN
+pipe_reg: process (clk)
+begin
+	if(clk='1' and clk' event) then
+		if (RST_n ='0') then
+			ff_0_past <= (others =>'0');
+			ff_1_past <= (others =>'0');
+		elsif (VOUT_pre2 = '1') then
+			ff_0_past <= ff_0;
+			ff_1_past <= ff_1;
+		end if;
+	end if;
+end process;
+
+-- Register at output (controlled by a delayed version of the VIN)
+output_reg: process (clk)
+begin
+	if(clk='1' and clk' event) then
+		if (RST_n ='0') then
+			DOUT <= (others =>'0');
+		elsif (VOUT_pre1 = '1') then
+			DOUT <= ff & zero_padding;
+		end if;
+	end if;
+end process;
+
+-- Process for delayin the input signal Vin and controlling the registers in the pipeline
+delay_vin: process (clk)
+begin
+	if(clk='1' and clk' event) then
+		if (RST_n ='0') then
+			VOUT_pre2 <= '0';
+			VOUT_pre1 <= '0';
+			VOUT <= '0';
+		else
+			VOUT_pre2 <= VIN;
+			VOUT_pre1 <= VOUT_pre2;
+			VOUT <= VOUT_pre1;
+		end if;
+	end if;
+end process;
 
 end behavioral;
 
