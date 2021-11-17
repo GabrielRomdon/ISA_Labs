@@ -21,11 +21,11 @@ set_load $OLOAD [all_outputs]
 
 compile
 
-write -hierarchy -format vhdl -output synth_netlist.vhdl
-write -hierarchy -format verilog -output synth_netlist.v
+write -hierarchy -format vhdl -output ../netlist/synth_netlist.vhdl
+write -hierarchy -format verilog -output ../netlist/synth_netlist.v
 
-write_sdf IIR_filter.sdf
-write_sdc IIR_filter.sdc
+write_sdf ../netlist/IIR_filter.sdf
+write_sdc ../netlist/IIR_filter.sdc
 report_timing > ./timing.txt
 report_area > ./area.txt
 

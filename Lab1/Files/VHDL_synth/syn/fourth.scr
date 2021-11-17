@@ -1,4 +1,4 @@
-read_verilog -netlist synth_netlist.v
+read_verilog -netlist ../netlist/synth_netlist.v
 
 current_design IIR_FILTER
 

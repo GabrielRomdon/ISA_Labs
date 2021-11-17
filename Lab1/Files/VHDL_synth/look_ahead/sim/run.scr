@@ -9,7 +9,7 @@ vcom -93 -work ./work ../tb/data_sink.vhd
 # Using the VHDL file from synthesis
 #vcom -93 -work ./work ../netlist/IIR_look_ahead.vhdl  
 # Using the Verilog file from synthesis
-vlog -work ./work ../netlist/IIR_look_ahead.v         
+vlog -work ./work ../netlist/IIR_look_ahead.v
 
 vlog -work ./work ../tb/tb_fir.v
 

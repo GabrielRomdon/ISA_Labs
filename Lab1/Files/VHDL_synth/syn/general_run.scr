@@ -11,9 +11,9 @@ vcom -93 -work ./work ../src/pkg.vhd
 vcom -93 -work ./work ../tb/clk_gen.vhd
 vcom -93 -work ./work ../tb/data_maker_new.vhd
 vcom -93 -work ./work ../tb/data_sink.vhd
-vcom -93 -work ./work synth_netlist.vhdl
+vcom -93 -work ./work ../netlist/synth_netlist.vhdl
 vlog -work ./work ../tb/tb_fir.v
-vsim -c work.tb_fir -L /software/dk/nangate45/verilog/msim6.2g +nowarnTSCALE -sdftyp /tb_fir/UUT=IIR_filter.sdf -do ./power.scr
+vsim -c work.tb_fir -L /software/dk/nangate45/verilog/msim6.2g +nowarnTSCALE -sdftyp /tb_fir/UUT=../netlist/IIR_filter.sdf -do ./power.scr
 
 source /software/scripts/init_synopsys_64.18
 vcd2saif -input ../vcd/IIR_syn.vcd -output ../saif/IIR_syn.saif

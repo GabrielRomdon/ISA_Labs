@@ -1,0 +1,12 @@
+H 2141964 11 3 0 6 2 0 0 0 0
+L 4 ieee 19 $MODEL_TECH/../ieee
+L 3 std 18 $MODEL_TECH/../std
+L 4 work 6 ./work
+D 19 ./work.clk_gen(beh) YZ[@=J:KK9n8oU7DJ5WL_1 2 1
+D 22 ./work.data_maker(beh) ]aHGFWYb[bnhcQPkmgRXT0 3 1
+D 21 ./work.data_sink(beh) DiO`gccEA28fbonACXhJn3 5 1
+D 29 ./work.iir_filter(behavioral) ]C?U1BP7NfFD<ncMZI^jV2 4 1
+D 17 ./work.lookah_pkg m5e:NXk8lCLO:oFWHVYTj1 0 1
+D 13 ./work.tb_fir CjK`IGWE=BKK^QnRL:<h^2 1 0
+2 0  0 e>K>AOPhRj[^eTTWd9W[:2 0 0 1
+2 4 fast 0 L1]6Tl^m`G2i:44lJH^I11 1 1 1
