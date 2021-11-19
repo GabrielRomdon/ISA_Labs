@@ -1,5 +1,5 @@
 package my_pkg is
 
-	constant n_levels : 6;
+	constant n_levels : integer := 7;
 
 end my_pkg;
