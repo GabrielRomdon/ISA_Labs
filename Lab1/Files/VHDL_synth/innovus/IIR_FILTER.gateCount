@@ -1,0 +1,5 @@
+Gate area 0.7980 um^2
+Level 0 Module IIR_FILTER                               Gates=      3192 Cells=    1304 Area=    2547.5 um^2
+Level 1 Module mult_38                                  Gates=950        Cells=390      Area=     758.6 um^2
+Level 1 Module mult_35                                  Gates=939        Cells=389      Area=     749.6 um^2
+Level 1 Module mult_39                                  Gates=950        Cells=390      Area=     758.6 um^2

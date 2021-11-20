@@ -1,0 +1,11 @@
+read_verilog -netlist ../netlist/synth_netlist.v
+
+current_design IIR_FILTER
+
+read_saif -input ../saif/IIR_syn.saif -instance tb_fir/UUT -unit ns -scale 1
+
+create_clock -name MY_CLK CLK
+
+report_power > ./sw_pwr.txt
+
+exit

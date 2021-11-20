@@ -1,0 +1,179 @@
+m255
+13
+cModel Technology
+d/home/isa14_2021_2022/Desktop/ISA_Labs/Lab1/Files/VHDL/look_ahead/sim
+T_opt
+VjThOU?0LkDVI97QChGYaV1
+06 6 4 ./work tb_fir fast 0
+o-quiet -auto_acc_if_foreign -work work
+tExplicit 1
+OE;O;6.2g;35
+Eclk_gen
+w1634028197
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../tb/clk_gen.vhd
+F../tb/clk_gen.vhd
+l0
+L6
+VlKk0OVG2Lg8n7K0PBj]Ka2
+OE;C;6.2g;35
+31
+o-93 -work ./work
+tExplicit 1
+Abeh
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work clk_gen lKk0OVG2Lg8n7K0PBj]Ka2
+l19
+L13
+VYZ[@=J:KK9n8oU7DJ5WL_1
+OE;C;6.2g;35
+31
+M3 ieee std_logic_1164
+M2 ieee std_logic_arith
+M1 ieee std_logic_unsigned
+o-93 -work ./work
+tExplicit 1
+Edata_maker
+w1635895520
+DP work lookah_pkg m5e:NXk8lCLO:oFWHVYTj1
+DP std textio K]Z^fghZ6B=BjnK5NomDT3
+DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../tb/data_maker_new.vhd
+F../tb/data_maker_new.vhd
+l0
+L11
+V94He82?DFKAfRjGfjTmM`1
+OE;C;6.2g;35
+31
+o-93 -work ./work
+tExplicit 1
+Abeh
+DP work lookah_pkg m5e:NXk8lCLO:oFWHVYTj1
+DP std textio K]Z^fghZ6B=BjnK5NomDT3
+DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work data_maker 94He82?DFKAfRjGfjTmM`1
+l32
+L25
+V]aHGFWYb[bnhcQPkmgRXT0
+OE;C;6.2g;35
+31
+M6 ieee std_logic_1164
+M5 ieee std_logic_arith
+M4 ieee std_logic_unsigned
+M3 ieee std_logic_textio
+M2 std textio
+M1 work lookah_pkg
+o-93 -work ./work
+tExplicit 1
+Edata_sink
+w1635850491
+DP work lookah_pkg m5e:NXk8lCLO:oFWHVYTj1
+DP std textio K]Z^fghZ6B=BjnK5NomDT3
+DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../tb/data_sink.vhd
+F../tb/data_sink.vhd
+l0
+L11
+VOhEa<i=^?^jS5MVOBK]ME3
+OE;C;6.2g;35
+31
+o-93 -work ./work
+tExplicit 1
+Abeh
+DP work lookah_pkg m5e:NXk8lCLO:oFWHVYTj1
+DP std textio K]Z^fghZ6B=BjnK5NomDT3
+DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work data_sink OhEa<i=^?^jS5MVOBK]ME3
+l21
+L19
+VDiO`gccEA28fbonACXhJn3
+OE;C;6.2g;35
+31
+M6 ieee std_logic_1164
+M5 ieee std_logic_arith
+M4 ieee std_logic_unsigned
+M3 ieee std_logic_textio
+M2 std textio
+M1 work lookah_pkg
+o-93 -work ./work
+tExplicit 1
+Eiir_filter
+w1636057249
+DP work lookah_pkg m5e:NXk8lCLO:oFWHVYTj1
+DP std textio K]Z^fghZ6B=BjnK5NomDT3
+DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../src/IIR_look_ahead_pipe.vhd
+F../src/IIR_look_ahead_pipe.vhd
+l0
+L8
+V`EFkY>0m9HVR?=NOTU<Wz0
+OE;C;6.2g;35
+31
+o-93 -work ./work
+tExplicit 1
+Abehavioral
+DP work lookah_pkg m5e:NXk8lCLO:oFWHVYTj1
+DP std textio K]Z^fghZ6B=BjnK5NomDT3
+DP ieee std_logic_textio 8YS?iX`WD1REQG`ZRYQGB2
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee numeric_std =NSdli^?T5OD8;4F<blj<3
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work iir_filter `EFkY>0m9HVR?=NOTU<Wz0
+l40
+L25
+V]C?U1BP7NfFD<ncMZI^jV2
+OE;C;6.2g;35
+31
+M7 ieee std_logic_1164
+M6 ieee numeric_std
+M5 ieee std_logic_unsigned
+M4 ieee std_logic_arith
+M3 ieee std_logic_textio
+M2 std textio
+M1 work lookah_pkg
+o-93 -work ./work
+tExplicit 1
+Plookah_pkg
+w1635946914
+8../src/lookah_pkg.vhd
+F../src/lookah_pkg.vhd
+l0
+L1
+Vm5e:NXk8lCLO:oFWHVYTj1
+OE;C;6.2g;35
+31
+o-93 -work ./work
+tExplicit 1
+vtb_fir
+ICjK`IGWE=BKK^QnRL:<h^2
+Vn4ToFGQLaei@:>cm_n>5j1
+w1635250298
+8../tb/tb_fir.v
+F../tb/tb_fir.v
+L0 6
+Vn4ToFGQLaei@:>cm_n>5j1
+OE;L;6.2g;35
+r1
+31
+o-work ./work

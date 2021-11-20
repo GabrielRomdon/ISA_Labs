@@ -1,0 +1,41 @@
+#source /software/scripts/init_synopsys_64.18
+#design_vision -no_gui
+
+analyze -library WORK -format vhdl {../common/unpackfp_unpackfp.vhd}
+analyze -library WORK -format vhdl {../common/packfp_packfp.vhd}
+analyze -library WORK -format vhdl {../common/fpnormalize_fpnormalize.vhd}
+analyze -library WORK -format vhdl {../common/fpround_fpround.vhd}
+analyze -library WORK -format vhdl {../multiplier_regSignificands//fpmul_stage1_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier_regSignificands//fpmul_stage2_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier_regSignificands//fpmul_stage3_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier_regSignificands//fpmul_stage4_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier_regSignificands//fpmul_pipeline.vhd}
+
+#set power_preserve_rtl_hier_names true
+
+elaborate FPmul -architecture pipeline
+
+#critical path for unflattened is 0.38
+set clk_period 0.35
+create_clock -name MY_CLK -period $clk_period CLK
+set_max_delay $clk_period -from [all_inputs]
+set_max_delay $clk_period -to [all_outputs]
+set_max_delay $clk_period -from [all_inputs] -to [all_outputs]
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+ungroup -all -flatten
+
+compile
+
+#write -hierarchy -format vhdl -output synth_netlist.vhdl
+#write -hierarchy -format verilog -output synth_netlist.v
+
+#write_sdf IIR_filter.sdf
+#write_sdc IIR_filter.sdc
+report_timing > ./timing_flatten.txt
+report_area > ./area_flatten.txt
+
+#exit

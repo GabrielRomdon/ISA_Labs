@@ -72,7 +72,6 @@ ARCHITECTURE pipeline OF FPmul IS
    SIGNAL isZ_tab_stage1  : std_logic;
    SIGNAL isZ_tab_stage2  : std_logic;
 
-
    -- Component Declarations
    COMPONENT FPmul_stage1
    PORT (

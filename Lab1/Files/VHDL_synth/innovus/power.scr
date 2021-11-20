@@ -1,0 +1,6 @@
+vcd file ../vcd/IIR_syn.vcd
+vcd add /tb_fir/UUT/*
+
+run 1200ns
+
+exit

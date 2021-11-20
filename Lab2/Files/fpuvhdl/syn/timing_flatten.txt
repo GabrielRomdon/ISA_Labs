@@ -1,0 +1,50 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Tue Nov  9 13:13:20 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: FP_B[0] (input port)
+  Endpoint: I1/isINF_stage1_reg
+            (rising edge-triggered flip-flop)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  FP_B[0] (in)                             0.00       0.00 f
+  U188/ZN (INV_X1)                         0.02       0.02 r
+  U186/ZN (NAND2_X1)                       0.03       0.05 f
+  U257/ZN (NOR4_X1)                        0.06       0.11 r
+  U379/ZN (AND4_X1)                        0.08       0.19 r
+  U215/ZN (AND2_X1)                        0.04       0.23 r
+  U370/ZN (OR2_X1)                         0.04       0.27 r
+  U383/ZN (AND3_X1)                        0.05       0.31 r
+  I1/isINF_stage1_reg/D (DFF_X2)           0.01       0.32 r
+  data arrival time                                   0.32
+
+  max_delay                                0.35       0.35
+  library setup time                      -0.03       0.32
+  data required time                                  0.32
+  -----------------------------------------------------------
+  data required time                                  0.32
+  data arrival time                                  -0.32
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1
