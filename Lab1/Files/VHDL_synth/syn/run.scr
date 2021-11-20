@@ -4,7 +4,8 @@ vcom -93 -work ./work ../src/pkg.vhd
 vcom -93 -work ./work ../src/IIR_filter_template.vhd
 
 source /software/scripts/init_synopsys_64.18
-design_vision -no_gui -f ./second.scr
+design_vision -no_gui -f ./max_performance_DC.scr
+design_vision -no_gui -f ./first_DC.scr
 
 source /software/scripts/init_msim6.2g
 vcom -93 -work ./work ../src/pkg.vhd
@@ -17,5 +18,5 @@ vsim -c work.tb_fir -L /software/dk/nangate45/verilog/msim6.2g +nowarnTSCALE -sd
 
 source /software/scripts/init_synopsys_64.18
 vcd2saif -input ../vcd/IIR_syn.vcd -output ../saif/IIR_syn.saif
-design_vision -no_gui -f ./fourth.scr
+design_vision -no_gui -f ./second_DC.scr
 

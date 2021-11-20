@@ -1,0 +1,155 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2017 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v17.11-s080_1, built Fri Aug 4 11:13:11 PDT 2017
+Options:	
+Date:		Thu Nov 18 19:34:38 2021
+Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (1core*2cpus*Westmere E56xx/L56xx/X56xx (Nehalem-C) 4096KB)
+OS:		CentOS Linux release 7.6.1810 (Core) 
+
+License:
+		invs	Innovus Implementation System	17.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (31 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> getDrawView
+<CMD> loadWorkspace -name Physical
+<CMD> win
+<CMD> encMessage warning 0
+Suppress "**WARN ..." messages.
+<CMD> encMessage debug 0
+<CMD> encMessage info 0
+**WARN: (GLOBAL-100):	Global 'timing_enable_default_delay_arc' has become obsolete. It will be removed in the next release.
+my_rc
+Loading view definition file from /home/isa14_2021_2022/Desktop/ISA_Labs/Lab1/Files/VHDL_synth/innovus/IIR_FILTER.enc.dat/viewDefinition.tcl
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X4' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X4' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X4' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X4' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X4' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X4' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI221_X1' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI221_X2' is not defined in the library. (File /software/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+*** End library_loading (cpu=0.04min, real=0.27min, mem=18.9M, fe_cpu=0.49min, fe_real=4.63min, fe_mem=534.0M) ***
+*** Netlist is unique.
+Loading preference file /home/isa14_2021_2022/Desktop/ISA_Labs/Lab1/Files/VHDL_synth/innovus/IIR_FILTER.enc.dat/gui.pref.tcl ...
+**WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+**WARN: (GLOBAL-100):	Global 'timing_enable_default_delay_arc' has become obsolete. It will be removed in the next release.
+'set_default_switching_activity' finished successfully.
+<CMD> gui_select -rect {37.821 63.590 53.616 36.281}
+<CMD> gui_select -rect {53.616 36.281 42.249 49.419}
+<CMD> setLayerPreference mGrid -isVisible 1
+<CMD> setLayerPreference pGrid -isVisible 1
+<CMD> setLayerPreference userGrid -isVisible 1
+<CMD> setLayerPreference iGrid -isVisible 1
+<CMD> setLayerPreference fmGrid -isVisible 1
+<CMD> setLayerPreference fiGrid -isVisible 1
+<CMD> setLayerPreference fpGrid -isVisible 1
+<CMD> setLayerPreference gcell -isVisible 1
+<CMD> setLayerPreference trimGridObj -isVisible 1
+<CMD> setLayerPreference pgViaGridObj -isVisible 1
+<CMD> setLayerPreference mGrid -isVisible 0
+<CMD> setLayerPreference pGrid -isVisible 0
+<CMD> setLayerPreference userGrid -isVisible 0
+<CMD> setLayerPreference iGrid -isVisible 0
+<CMD> setLayerPreference fmGrid -isVisible 0
+<CMD> setLayerPreference fiGrid -isVisible 0
+<CMD> setLayerPreference fpGrid -isVisible 0
+<CMD> setLayerPreference gcell -isVisible 0
+<CMD> setLayerPreference trimGridObj -isVisible 0
+<CMD> setLayerPreference pgViaGridObj -isVisible 0
+<CMD> setLayerPreference trackObj -isVisible 1
+<CMD> setLayerPreference nonPrefTrackObj -isVisible 1
+<CMD> setLayerPreference trackObj -isVisible 0
+<CMD> setLayerPreference nonPrefTrackObj -isVisible 0
+<CMD> setLayerPreference densityMap -isVisible 1
+<CMD> setLayerPreference pinDensityMap -isVisible 1
+<CMD> setLayerPreference timingMap -isVisible 1
+<CMD> setLayerPreference metalDensityMap -isVisible 1
+<CMD> setLayerPreference powerDensity -isVisible 1
+<CMD> setLayerPreference groupmain_Congestion -isVisible 1
+<CMD> setLayerPreference densityMap -isVisible 0
+<CMD> setLayerPreference pinDensityMap -isVisible 0
+<CMD> setLayerPreference timingMap -isVisible 0
+<CMD> setLayerPreference metalDensityMap -isVisible 0
+<CMD> setLayerPreference powerDensity -isVisible 0
+<CMD> setLayerPreference groupmain_Congestion -isVisible 0
+<CMD> ::fit main.layout.win
+<CMD> setLayerPreference pinObj -isVisible 1
+<CMD> setLayerPreference cellBlkgObj -isVisible 1
+<CMD> setLayerPreference layoutObj -isVisible 1
+<CMD> setLayerPreference pinObj -isSelectable 1
+<CMD> setLayerPreference cellBlkgObj -isSelectable 1
+<CMD> setLayerPreference layoutObj -isSelectable 1
+<CMD> selectObject Module mult_39
+<CMD> gui_select -rect {-7.941 16.057 -8.826 14.138}
+<CMD> selectObject Module mult_39
+<CMD> deselectAll
+<CMD> selectObject Module mult_39
+<CMD> deselectAll
+<CMD> selectObject Module mult_35
+<CMD> deselectAll
+<CMD> gui_select -rect {27.340 65.066 36.788 57.390}
+<CMD> zoomIn
+<CMD> zoomOut
+<CMD> redraw
+<CMD> get_visible_nets
+<CMD> selectObject Module mult_38
+<CMD> deselectAll
+<CMD> selectObject Module mult_35
+<CMD> deselectAll
+<CMD> selectObject Module mult_39
+<CMD> deselectAll
+<CMD> selectObject Module mult_35
+<CMD> deselectAll
+<CMD> selectObject Module mult_38
+<CMD> deselectAll
+<CMD> selectObject Module mult_39
+<CMD> gui_select -rect {-9.857 19.747 -7.200 19.451}
+<CMD> get_visible_nets
+<CMD> selectObject Module mult_39
+<CMD> get_visible_nets
+Loading mult_39 (IIR_FILTER_DW_mult_tc_0)
+Traverse HInst mult_39(IIR_FILTER_DW_mult_tc_0)
+<CMD> setLayerPreference trackObj -isVisible 1
+<CMD> setLayerPreference nonPrefTrackObj -isVisible 1
+<CMD> setLayerPreference densityMap -isVisible 1
+<CMD> setLayerPreference pinDensityMap -isVisible 1
+<CMD> setLayerPreference timingMap -isVisible 1
+<CMD> setLayerPreference metalDensityMap -isVisible 1
+<CMD> setLayerPreference powerDensity -isVisible 1
+<CMD> setLayerPreference groupmain_Congestion -isVisible 1
+<CMD> ::fit main.layout.win
+<CMD> setLayerPreference trackObj -isVisible 0
+<CMD> setLayerPreference nonPrefTrackObj -isVisible 0
+<CMD> setLayerPreference densityMap -isVisible 0
+<CMD> setLayerPreference pinDensityMap -isVisible 0
+<CMD> setLayerPreference timingMap -isVisible 0
+<CMD> setLayerPreference metalDensityMap -isVisible 0
+<CMD> setLayerPreference powerDensity -isVisible 0
+<CMD> setLayerPreference groupmain_Congestion -isVisible 0
+<CMD> deselectAll
+<CMD> setLayerPreference gdsii -isVisible 1
+<CMD> setLayerPreference portNum -isVisible 1
+
+*** Memory Usage v#1 (Current mem = 968.590M, initial mem = 179.684M) ***
+*** Message Summary: 23 warning(s), 0 error(s)
+
+--- Ending "Innovus" (totcpu=0:00:45.9, real=0:09:26, mem=968.6M) ---
