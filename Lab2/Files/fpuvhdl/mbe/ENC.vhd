@@ -10,7 +10,7 @@ end ENC;
 
 
 architecture beh of ENC is
-
+begin
 p <=  (others => '0') when (b = "000") else 
       '0' & A         when (b = "001") else
       '0' & A         when (b = "010") else
@@ -18,6 +18,6 @@ p <=  (others => '0') when (b = "000") else
         A & '0'       when (b = "100") else
       '0' & A         when (b = "101") else
       '0' & A         when (b = "110") else
-      (others => '0') when (b = "000") else 
+      (others => '0') when (b = "000"); 
 
-end beh
+end beh;
