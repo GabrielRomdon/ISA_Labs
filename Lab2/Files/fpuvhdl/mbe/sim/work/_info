@@ -1,0 +1,69 @@
+m255
+13
+cModel Technology
+d/home/isa14_2021_2022/Desktop/ISA_Labs/Lab2/Files/fpuvhdl/mbe/sim
+Efa
+w1637058518
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../FA.vhd
+F../FA.vhd
+l0
+L4
+VG;z=MgO]LnWP@F51]:HEE1
+OE;C;6.2g;35
+32
+tExplicit 1
+Artl
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work fa G;z=MgO]LnWP@F51]:HEE1
+l13
+L12
+VXKO=7B[fQKIWjIZD=lCgU3
+OE;C;6.2g;35
+32
+M1 ieee std_logic_1164
+tExplicit 1
+Eha
+w1637058068
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../HA.vhd
+F../HA.vhd
+l0
+L4
+V54og1[3?TkXZW^5Kb8R7`1
+OE;C;6.2g;35
+32
+tExplicit 1
+Artl
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work ha 54og1[3?TkXZW^5Kb8R7`1
+l12
+L11
+VhnO;lkWiGPBnNeB3aVLAX1
+OE;C;6.2g;35
+32
+M1 ieee std_logic_1164
+tExplicit 1
+Embe
+w1637669589
+DP work my_pkg j6`dma87]hZGlQoWJd0?10
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+8../MBE.vhd
+F../MBE.vhd
+l0
+L6
+VZM1h_GRVPUmNJm=S3F0B@1
+OE;C;6.2g;35
+32
+tExplicit 1
+Pmy_pkg
+w1637669591
+8../my_pkg.vhd
+F../my_pkg.vhd
+l0
+L1
+Vj6`dma87]hZGlQoWJd0?10
+OE;C;6.2g;35
+32
+b1
+tExplicit 1
