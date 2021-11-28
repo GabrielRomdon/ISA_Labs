@@ -15,9 +15,10 @@ p <=  (others => '0') when (b = "000") else
       '0' & A         when (b = "001") else
       '0' & A         when (b = "010") else
         A & '0'       when (b = "011") else
-        A & '0'       when (b = "100") else
-      '0' & A         when (b = "101") else
-      '0' & A         when (b = "110") else
-      (others => '0') when (b = "000"); 
+        not(A) & '1'       when (b = "100") else
+      '1' & not(A)         when (b = "101") else
+      '1' & not(A)         when (b = "110") else
+      (others => '1') when (b = "111") else
+      (others => '0'); 
 
 end beh;
