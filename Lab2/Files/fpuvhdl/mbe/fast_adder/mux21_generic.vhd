@@ -6,6 +6,7 @@ use WORK.constants.all;
 entity MUX21_GENERIC is
 
 	Generic (N: integer := NBIT_PER_BLOCK);
+		 	 
 	Port (	A:	In	std_logic_vector(N-1 downto 0) ;
 			B:	In	std_logic_vector(N-1 downto 0);
 			SEL:In	std_logic;
@@ -21,7 +22,7 @@ begin
 	begin
 
 		if SEL ='1' then
-			Y <= A;
+			Y <= A; 
 		else
 			Y <= B;
 		end if;

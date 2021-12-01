@@ -4,8 +4,8 @@ use ieee.std_logic_unsigned.all;
 use WORK.constants.all;
 
 entity SUM_GENERATOR is
-		generic (	NBIT_PER_BLOCK: integer := NBIT_PER_BLOCK;
-					NBLOCKS:	integer := NBLOCKS);
+		generic (	NBIT_PER_BLOCK: integer := 4;
+					NBLOCKS:	integer := 8);
 		port (	A:	in	std_logic_vector(NBIT_PER_BLOCK*NBLOCKS-1 downto 0);
 				B:	in	std_logic_vector(NBIT_PER_BLOCK*NBLOCKS-1 downto 0);
 				Ci:	in	std_logic_vector(NBLOCKS-1 downto 0);

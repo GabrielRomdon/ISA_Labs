@@ -115,7 +115,7 @@ RaiseDots: for i in 0 to 16 generate
     end generate OddCols;
   end generate OtherColumns;
 
-  -- The sign bits on the left have to be added? YES... GABRIEL, forse lo hai già fatto nella riga 69-73?
+ 
 end generate RaiseDots;
 
 MainAlgorithm: for level in 0 to n_levels generate --n_levels
@@ -262,13 +262,13 @@ MainAlgorithm: for level in 0 to n_levels generate --n_levels
     q(level+1)(1)(2) <= q(level)(2)(2);
   end generate SignLevel5; 
 end generate MainAlgorithm;
-
+q
+(6)(1)(1) <= '0';
 --Final 2-inputs adder instantiation 
 
---	P4_ADDER_0 : P4_ADDER port map ( A => q(6)(0)(63 downto 0), b => q(6)(1)(63 downto 0), Cin => '0', S => C, Cout => Cout_tmp); --Cout not mapped??
+P4_ADDER_0 : P4_ADDER port map ( A => q(6)(0)(63 downto 0), b => q(6)(1)(63 downto 0), Cin => '0', S => C); --Cout not mapped
 
-q(6)(1)(1) <= '0';
-C<= q(6)(0)(63 downto 0) +q(6)(1)(63 downto 0);
+--C<= q(6)(0)(63 downto 0) +q(6)(1)(63 downto 0);
 
 
 

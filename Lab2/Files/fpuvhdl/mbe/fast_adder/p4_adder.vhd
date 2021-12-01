@@ -24,9 +24,8 @@ architecture STRUCTURAL of P4_ADDER is
 -----------------------------COMPONENTS-------------------------------
 
 component CARRY_GENERATOR 
-		generic (
-			NBIT :		integer := NBIT;
-			NBIT_PER_BLOCK: integer := NBIT_PER_BLOCK);
+		generic ( NBIT :		integer := NBIT;
+				NBIT_PER_BLOCK: integer := NBIT_PER_BLOCK);
 		port (
 			A :		in	std_logic_vector(NBIT -1 downto 0);
 			B :		in	std_logic_vector(NBIT -1 downto 0);
@@ -58,7 +57,7 @@ signal carry_out :std_logic_vector (NBLOCKS downto 0 ); --NBLOCK +1 to take into
 
 begin
 
-	CARRY_GEN_INST: CARRY_GENERATOR generic map (NBIT_PER_BLOCK => NBIT_PER_BLOCK, NBIT => NBIT_PER_BLOCK*NBLOCKS ) --defined in constants.vhd
+	CARRY_GEN_INST: CARRY_GENERATOR generic map (NBIT_PER_BLOCK => NBIT_PER_BLOCK, NBIT => NBIT_PER_BLOCK*NBLOCKS ) --defined in constants
 									port map	(	A => A, 
 													B => B,
 													Cin => Cin,
