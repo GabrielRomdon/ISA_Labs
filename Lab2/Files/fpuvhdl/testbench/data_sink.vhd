@@ -17,7 +17,7 @@ end data_sink;
 architecture beh of data_sink is
 
   constant tco : time := 1 ns;
-  constant pipeline_stages : integer := 5;
+  constant pipeline_stages : integer := 4;
   
   signal prod_file			: std_logic_vector(31 downto 0);
   signal data_valid 		: std_logic;

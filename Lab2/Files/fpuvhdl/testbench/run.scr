@@ -7,16 +7,43 @@ vcom -93 -work ./work ../common/unpackfp_unpackfp.vhd
 vcom -93 -work ./work ../common/packfp_packfp.vhd
 vcom -93 -work ./work ../common/fpnormalize_fpnormalize.vhd
 vcom -93 -work ./work ../common/fpround_fpround.vhd
+
+# Normal multiplier
 #vcom -93 -work ./work ../multiplier/fpmul_stage1_struct.vhd
 #vcom -93 -work ./work ../multiplier/fpmul_stage2_struct.vhd
 #vcom -93 -work ./work ../multiplier/fpmul_stage3_struct.vhd
 #vcom -93 -work ./work ../multiplier/fpmul_stage4_struct.vhd
 #vcom -93 -work ./work ../multiplier/fpmul_pipeline.vhd
-vcom -93 -work ./work ../multiplier_regSignificands//fpmul_stage1_struct.vhd
-vcom -93 -work ./work ../multiplier_regSignificands//fpmul_stage2_struct.vhd
-vcom -93 -work ./work ../multiplier_regSignificands//fpmul_stage3_struct.vhd
-vcom -93 -work ./work ../multiplier_regSignificands//fpmul_stage4_struct.vhd
-vcom -93 -work ./work ../multiplier_regSignificands//fpmul_pipeline.vhd
+
+# Multiplier with registers in the significands multiplier
+#vcom -93 -work ./work ../multiplier_regSignificands/fpmul_stage1_struct.vhd
+#vcom -93 -work ./work ../multiplier_regSignificands/fpmul_stage2_struct.vhd
+#vcom -93 -work ./work ../multiplier_regSignificands/fpmul_stage3_struct.vhd
+#vcom -93 -work ./work ../multiplier_regSignificands/fpmul_stage4_struct.vhd
+#vcom -93 -work ./work ../multiplier_regSignificands/fpmul_pipeline.vhd
+
+# Multiplier with MBE at the significands
+vcom -93 -work ./work ../mbe/my_pkg.vhd
+vcom -93 -work ./work ../mbe/fast_adder/constants.vhd
+vcom -93 -work ./work ../mbe/fast_adder/G_general.vhd
+vcom -93 -work ./work ../mbe/fast_adder/PG_GENERAL.vhd
+vcom -93 -work ./work ../mbe/fast_adder/pg_net.vhd
+vcom -93 -work ./work ../mbe/fast_adder/mux21_generic.vhd
+vcom -93 -work ./work ../mbe/fast_adder/fa.vhd
+vcom -93 -work ./work ../mbe/fast_adder/RCA_generic.vhd
+vcom -93 -work ./work ../mbe/fast_adder/carry_generator.vhd
+vcom -93 -work ./work ../mbe/fast_adder/carry_select.vhd
+vcom -93 -work ./work ../mbe/fast_adder/sum_generator.vhd
+vcom -93 -work ./work ../mbe/fast_adder/p4_adder.vhd
+vcom -93 -work ./work ../mbe/HA.vhd
+vcom -93 -work ./work ../mbe/ENC.vhd
+vcom -93 -work ./work ../mbe/MBE.vhd
+vcom -93 -work ./work ../multiplier_MBE/fpmul_stage1_struct.vhd
+vcom -93 -work ./work ../multiplier_MBE/fpmul_stage2_struct.vhd
+vcom -93 -work ./work ../multiplier_MBE/fpmul_stage3_struct.vhd
+vcom -93 -work ./work ../multiplier_MBE/fpmul_stage4_struct.vhd
+vcom -93 -work ./work ../multiplier_MBE/fpmul_pipeline.vhd
+
 vcom -93 -work ./work ./clk_gen.vhd
 vcom -93 -work ./work ./data_maker.vhd
 vcom -93 -work ./work ./data_sink.vhd
@@ -24,6 +51,6 @@ vcom -93 -work ./work ./tb_mul_pipe.vhd
 
 vsim work.tb_mul_pipe
 
-#do wave.do
+do wave.do
 
 run 300ns

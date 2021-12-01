@@ -23,9 +23,12 @@ ReadMe File
 
 This archive contains the VHDL code for the FP adder and multiplier. It is structured in 3 directories:
 
-adder		- adder specific files
-multiplier	- multiplier specific files
-common		- files common to the adder and multiplier
+adder		                    - adder specific files
+multiplier	                - multiplier specific files (starting point for all the other versions of the multiplier)
+multiplier_MBE              - multiplier with the MBE used for the significands
+multiplier_regSignificands  - multiplier with registers in the significands stage
+multiplier_with_input_regs  - multiplier with registers at the inputs
+common		                  - files common to the adder and multiplier
 
 Please note that files may require modification to work in your particular system.
 
