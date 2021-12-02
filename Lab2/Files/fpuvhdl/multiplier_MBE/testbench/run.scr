@@ -1,0 +1,18 @@
+# source /software/scripts/init_msim6.2g
+
+if [file exists work] {vdel -all}
+vlib work
+
+# Multiplier with MBE at the significands (post-synth netlist)
+vcom -93 -work ./work ../syn/netlist/fpmul_pipeline_mbe_postsyn.vhdl
+
+vcom -93 -work ./work ./clk_gen.vhd
+vcom -93 -work ./work ./data_maker.vhd
+vcom -93 -work ./work ./data_sink.vhd
+vcom -93 -work ./work ./tb_mul_pipe.vhd
+
+vsim work.tb_mul_pipe -L /software/dk/nangate45/verilog/msim6.2g
+
+do wave.do
+
+run 300ns

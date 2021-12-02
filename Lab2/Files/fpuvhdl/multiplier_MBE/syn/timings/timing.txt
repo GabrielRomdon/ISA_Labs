@@ -1,0 +1,199 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Thu Dec  2 13:29:17 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: I1/B_SIG_reg[1]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: I2/SIG_in_reg[17]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  I1/B_SIG_reg[1]/CK (DFF_X1)                             0.00       0.00 r
+  I1/B_SIG_reg[1]/QN (DFF_X1)                             0.07       0.07 f
+  I1/U3/ZN (INV_X4)                                       0.08       0.15 r
+  I1/B_SIG[1] (FPmul_stage1)                              0.00       0.15 r
+  I2/B_SIG[1] (FPmul_stage2)                              0.00       0.15 r
+  I2/MBE_SIG/B[1] (MBE)                                   0.00       0.15 r
+  I2/MBE_SIG/encI_2/b[0] (ENC_16)                         0.00       0.15 r
+  I2/MBE_SIG/encI_2/U111/Z (XOR2_X1)                      0.09       0.24 r
+  I2/MBE_SIG/encI_2/U97/ZN (NAND2_X1)                     0.04       0.28 f
+  I2/MBE_SIG/encI_2/U39/ZN (AND4_X1)                      0.08       0.36 f
+  I2/MBE_SIG/encI_2/U115/ZN (NOR3_X1)                     0.08       0.43 r
+  I2/MBE_SIG/encI_2/U7/ZN (NAND3_X1)                      0.05       0.48 f
+  I2/MBE_SIG/encI_2/p[24] (ENC_16)                        0.00       0.48 f
+  I2/MBE_SIG/FA_C_0_0_26/B (FA_0)                         0.00       0.48 f
+  I2/MBE_SIG/FA_C_0_0_26/U4/Z (XOR2_X1)                   0.08       0.56 f
+  I2/MBE_SIG/FA_C_0_0_26/U2/ZN (AOI22_X1)                 0.06       0.62 r
+  I2/MBE_SIG/FA_C_0_0_26/U1/ZN (INV_X1)                   0.03       0.65 f
+  I2/MBE_SIG/FA_C_0_0_26/Co (FA_0)                        0.00       0.65 f
+  I2/MBE_SIG/FA_C_1_0_27/B (FA_559)                       0.00       0.65 f
+  I2/MBE_SIG/FA_C_1_0_27/U4/Z (XOR2_X1)                   0.08       0.73 f
+  I2/MBE_SIG/FA_C_1_0_27/U3/Z (XOR2_X1)                   0.08       0.81 f
+  I2/MBE_SIG/FA_C_1_0_27/S (FA_559)                       0.00       0.81 f
+  I2/MBE_SIG/FA_C_2_0_27/A (FA_449)                       0.00       0.81 f
+  I2/MBE_SIG/FA_C_2_0_27/U4/Z (XOR2_X1)                   0.08       0.89 f
+  I2/MBE_SIG/FA_C_2_0_27/U2/ZN (AOI22_X1)                 0.06       0.95 r
+  I2/MBE_SIG/FA_C_2_0_27/U1/ZN (INV_X1)                   0.03       0.98 f
+  I2/MBE_SIG/FA_C_2_0_27/Co (FA_449)                      0.00       0.98 f
+  I2/MBE_SIG/FA_C_3_0_28/B (FA_324)                       0.00       0.98 f
+  I2/MBE_SIG/FA_C_3_0_28/U4/Z (XOR2_X1)                   0.08       1.06 f
+  I2/MBE_SIG/FA_C_3_0_28/U3/Z (XOR2_X1)                   0.08       1.14 f
+  I2/MBE_SIG/FA_C_3_0_28/S (FA_324)                       0.00       1.14 f
+  I2/MBE_SIG/FA_C_4_0_28/A (FA_222)                       0.00       1.14 f
+  I2/MBE_SIG/FA_C_4_0_28/U4/Z (XOR2_X1)                   0.08       1.22 f
+  I2/MBE_SIG/FA_C_4_0_28/U1/ZN (AOI22_X1)                 0.06       1.28 r
+  I2/MBE_SIG/FA_C_4_0_28/U2/ZN (INV_X1)                   0.03       1.30 f
+  I2/MBE_SIG/FA_C_4_0_28/Co (FA_222)                      0.00       1.30 f
+  I2/MBE_SIG/FA_C_5_0_29/B (FA_163)                       0.00       1.30 f
+  I2/MBE_SIG/FA_C_5_0_29/U4/Z (XOR2_X1)                   0.08       1.38 f
+  I2/MBE_SIG/FA_C_5_0_29/U2/Z (XOR2_X1)                   0.07       1.45 f
+  I2/MBE_SIG/FA_C_5_0_29/S (FA_163)                       0.00       1.45 f
+  I2/MBE_SIG/P4_ADDER_0/A[29] (P4_ADDER_NBIT64_NBIT_PER_BLOCK4_NBLOCKS16)
+                                                          0.00       1.45 f
+  I2/MBE_SIG/P4_ADDER_0/U1/Z (BUF_X1)                     0.05       1.51 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/A[29] (CARRY_GENERATOR_NBIT64_NBIT_PER_BLOCK4)
+                                                          0.00       1.51 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PG_NETWORK_0_30/A (PG_NET_35)
+                                                          0.00       1.51 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PG_NETWORK_0_30/U2/Z (XOR2_X1)
+                                                          0.09       1.59 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PG_NETWORK_0_30/P_OUT (PG_NET_35)
+                                                          0.00       1.59 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET1_1_30/PG_ik[0] (PG_GENERAL_50)
+                                                          0.00       1.59 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET1_1_30/U2/ZN (AOI21_X1)
+                                                          0.05       1.64 r
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET1_1_30/U3/ZN (INV_X1)
+                                                          0.02       1.66 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET1_1_30/PG_ij[1] (PG_GENERAL_50)
+                                                          0.00       1.66 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_2_32_0/PG_k_1j[1] (PG_GENERAL_26)
+                                                          0.00       1.66 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_2_32_0/U3/ZN (AOI21_X1)
+                                                          0.04       1.70 r
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_2_32_0/U2/ZN (INV_X1)
+                                                          0.02       1.72 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_2_32_0/PG_ij[1] (PG_GENERAL_26)
+                                                          0.00       1.72 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_3_32_0/PG_ik[1] (PG_GENERAL_15)
+                                                          0.00       1.72 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_3_32_0/U2/ZN (AOI21_X1)
+                                                          0.05       1.77 r
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_3_32_0/U3/ZN (INV_X1)
+                                                          0.02       1.80 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_3_32_0/PG_ij[1] (PG_GENERAL_15)
+                                                          0.00       1.80 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_4_32_0/PG_ik[1] (PG_GENERAL_9)
+                                                          0.00       1.80 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_4_32_0/U2/ZN (AOI21_X1)
+                                                          0.05       1.85 r
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_4_32_0/U3/ZN (INV_X1)
+                                                          0.02       1.87 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/PGNET_i_4_32_0/PG_ij[1] (PG_GENERAL_9)
+                                                          0.00       1.87 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_5_32_0/PG_ik[1] (G_GENERAL_9)
+                                                          0.00       1.87 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_5_32_0/U2/ZN (AOI21_X1)
+                                                          0.05       1.92 r
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_5_32_0/U1/ZN (INV_X1)
+                                                          0.03       1.95 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_5_32_0/G_ij (G_GENERAL_9)
+                                                          0.00       1.95 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/U1/Z (CLKBUF_X1)
+                                                          0.04       1.99 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_6_36_28/G_k_1j (G_GENERAL_8)
+                                                          0.00       1.99 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_6_36_28/U2/ZN (AOI21_X1)
+                                                          0.05       2.04 r
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_6_36_28/U1/ZN (INV_X1)
+                                                          0.04       2.07 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/GNET_i_6_36_28/G_ij (G_GENERAL_8)
+                                                          0.00       2.07 f
+  I2/MBE_SIG/P4_ADDER_0/CARRY_GEN_INST/Co[9] (CARRY_GENERATOR_NBIT64_NBIT_PER_BLOCK4)
+                                                          0.00       2.07 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/Ci[9] (SUM_GENERATOR_NBIT_PER_BLOCK4_NBLOCKS16)
+                                                          0.00       2.07 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/Ci (carry_select_N4_7)
+                                                          0.00       2.07 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/MUX/SEL (MUX21_GENERIC_N4_7)
+                                                          0.00       2.07 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/MUX/U6/ZN (INV_X1)
+                                                          0.05       2.12 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/MUX/U3/ZN (AOI22_X1)
+                                                          0.04       2.16 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/MUX/U9/ZN (INV_X1)
+                                                          0.03       2.19 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/MUX/Y[1] (MUX21_GENERIC_N4_7)
+                                                          0.00       2.19 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_9/S[1] (carry_select_N4_7)
+                                                          0.00       2.19 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/S[37] (SUM_GENERATOR_NBIT_PER_BLOCK4_NBLOCKS16)
+                                                          0.00       2.19 r
+  I2/MBE_SIG/P4_ADDER_0/S[37] (P4_ADDER_NBIT64_NBIT_PER_BLOCK4_NBLOCKS16)
+                                                          0.00       2.19 r
+  I2/MBE_SIG/C[37] (MBE)                                  0.00       2.19 r
+  I2/SIG_in_reg[17]/D (DFF_X1)                            0.01       2.20 r
+  data arrival time                                                  2.20
+
+  clock MY_CLK (rise edge)                                2.30       2.30
+  clock network delay (ideal)                             0.00       2.30
+  clock uncertainty                                      -0.07       2.23
+  I2/SIG_in_reg[17]/CK (DFF_X1)                           0.00       2.23 r
+  library setup time                                     -0.03       2.20
+  data required time                                                 2.20
+  --------------------------------------------------------------------------
+  data required time                                                 2.20
+  data arrival time                                                 -2.20
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: I4/FP_Z_reg[0]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: FP_Z[0] (output port)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  I4/FP_Z_reg[0]/CK (DFF_X1)               0.00       0.00 r
+  I4/FP_Z_reg[0]/Q (DFF_X1)                0.09       0.09 r
+  I4/FP_Z[0] (FPmul_stage4)                0.00       0.09 r
+  FP_Z[0] (out)                            0.02       0.11 r
+  data arrival time                                   0.11
+
+  max_delay                                2.30       2.30
+  output external delay                    0.00       2.30
+  data required time                                  2.30
+  -----------------------------------------------------------
+  data required time                                  2.30
+  data arrival time                                  -0.11
+  -----------------------------------------------------------
+  slack (MET)                                         2.19
+
+
+1

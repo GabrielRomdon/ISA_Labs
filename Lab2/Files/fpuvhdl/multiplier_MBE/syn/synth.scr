@@ -1,0 +1,44 @@
+analyze -library WORK -format vhdl {../../common/unpackfp_unpackfp.vhd}
+analyze -library WORK -format vhdl {../../common/packfp_packfp.vhd}
+analyze -library WORK -format vhdl {../../common/fpnormalize_fpnormalize.vhd}
+analyze -library WORK -format vhdl {../../common/fpround_fpround.vhd}
+analyze -library WORK -format vhdl {../../mbe/my_pkg.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/constants.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/G_general.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/PG_GENERAL.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/pg_net.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/mux21_generic.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/fa.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/RCA_generic.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/carry_generator.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/carry_select.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/sum_generator.vhd}
+analyze -library WORK -format vhdl {../../mbe/fast_adder/p4_adder.vhd}
+analyze -library WORK -format vhdl {../../mbe/HA.vhd}
+analyze -library WORK -format vhdl {../../mbe/ENC.vhd}
+analyze -library WORK -format vhdl {../../mbe/MBE.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage1_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage2_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage3_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage4_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_pipeline.vhd}
+
+elaborate FPmul -architecture pipeline
+
+set clk_period 2.3
+create_clock -name MY_CLK -period $clk_period clk
+set_max_delay $clk_period -from [all_inputs]
+set_max_delay $clk_period -to [all_outputs]
+set_max_delay $clk_period -from [all_inputs] -to [all_outputs]
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+compile -map_effort high
+
+report_timing > ./timings/timing.txt
+report_area > ./areas/area.txt
+
+write -hierarchy -format vhdl -output ./netlist/fpmul_pipeline_mbe_postsyn.vhdl
+
