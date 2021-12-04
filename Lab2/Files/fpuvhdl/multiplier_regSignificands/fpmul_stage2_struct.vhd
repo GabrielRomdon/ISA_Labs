@@ -69,11 +69,11 @@ ARCHITECTURE struct OF FPmul_stage2 IS
    SIGNAL dout1       : std_logic_vector(7 DOWNTO 0);
    SIGNAL prod        : std_logic_vector(63 DOWNTO 0);
    
+   signal prod_tmp            : std_logic_vector(63 DOWNTO 0);
    signal EXP_in_tmp       		: std_logic_vector(7 DOWNTO 0);
    signal EXP_neg_stage2_tmp  	: std_logic;
    signal EXP_pos_stage2_tmp  	: std_logic;
    signal SIGN_out_stage2_tmp 	: std_logic;
-   signal SIG_in_tmp          	: std_logic_vector(27 DOWNTO 0);
    signal isINF_stage2_tmp    	: std_logic;
    signal isNaN_stage2_tmp    	: std_logic;
    signal isZ_tab_stage2_tmp 	: std_logic;
@@ -84,7 +84,7 @@ BEGIN
    -- Architecture concurrent statements
    -- HDL Embedded Text Block 1 sig
    -- eb1 1
-   SIG_in_int <= prod(47 DOWNTO 20);
+   SIG_in_int <= prod_tmp(47 DOWNTO 20);
 
    -- HDL Embedded Text Block 2 inv
    -- eb5 5
@@ -97,7 +97,7 @@ BEGIN
    BEGIN
       IF RISING_EDGE(clk) THEN
          EXP_in_tmp <= EXP_in_int;
-         SIG_in_tmp <= SIG_in_int;
+         SIG_in <= SIG_in_int;
          EXP_pos_stage2_tmp <= EXP_pos_int;
          EXP_neg_stage2_tmp <= EXP_neg_int;
       END IF;
@@ -148,21 +148,26 @@ BEGIN
    dout <= '1';
 
    -- Instance port mappings.
-   
-   
-   
-	-- output regs process:
+
+  -- Process at the output of the product
+  PROD_REG : process (clk)
+  begin
+    if rising_edge(clk) then
+      prod_tmp <= prod;
+    end if;
+  end process PROD_REG;
+
+	-- Output regs process (for delaying the other signals):
 	OUT_REG : process (clk)
 	begin
 		if rising_edge(clk) then
-			EXP_in <= EXP_in_tmp;
-			EXP_neg_stage2 <= EXP_neg_stage2_tmp;
-			EXP_pos_stage2 <= EXP_pos_stage2_tmp;
+			EXP_in          <= EXP_in_tmp;
+			EXP_neg_stage2  <= EXP_neg_stage2_tmp;
+			EXP_pos_stage2  <= EXP_pos_stage2_tmp;
 			SIGN_out_stage2 <= SIGN_out_stage2_tmp;
-			SIG_in <= SIG_in_tmp;
-			isINF_stage2 <= isINF_stage2_tmp;
-			isNaN_stage2 <= isNaN_stage2_tmp;
-			isZ_tab_stage2 <= isZ_tab_stage2_tmp;
+			isINF_stage2    <= isINF_stage2_tmp;
+			isNaN_stage2    <= isNaN_stage2_tmp;
+			isZ_tab_stage2  <= isZ_tab_stage2_tmp;
 		end if;
 	end process OUT_REG;
 

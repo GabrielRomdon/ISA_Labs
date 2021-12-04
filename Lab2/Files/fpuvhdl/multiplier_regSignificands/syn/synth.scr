@@ -1,0 +1,45 @@
+analyze -library WORK -format vhdl {../../common/unpackfp_unpackfp.vhd}
+analyze -library WORK -format vhdl {../../common/packfp_packfp.vhd}
+analyze -library WORK -format vhdl {../../common/fpnormalize_fpnormalize.vhd}
+analyze -library WORK -format vhdl {../../common/fpround_fpround.vhd}
+
+analyze -library WORK -format vhdl {../fpmul_stage1_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage2_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage3_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_stage4_struct.vhd}
+analyze -library WORK -format vhdl {../fpmul_pipeline.vhd}
+
+elaborate FPmul -architecture pipeline
+
+set clk_period 1.6
+create_clock -name MY_CLK -period $clk_period clk
+set_max_delay $clk_period -from [all_inputs]
+set_max_delay $clk_period -to [all_outputs]
+set_max_delay $clk_period -from [all_inputs] -to [all_outputs]
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+compile
+
+report_timing > ./timings/timing_beforeRetime.txt
+report_area > ./areas/area_beforeRetime.txt
+
+######### Setting constraints before retiming
+#set clk_period 0.75
+#create_clock -name MY_CLK -period $clk_period clk
+#set_max_delay $clk_period -from [all_inputs]
+#set_max_delay $clk_period -to [all_outputs]
+#set_max_delay $clk_period -from [all_inputs] -to [all_outputs]
+#set_dont_touch_network MY_CLK
+#set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+#
+## Perform retiming
+#optimize_register
+#
+#report_timing > ./timings/timing_afterRetime.txt
+#report_area > ./areas/area_afterRetime.txt
+#
+#write -hierarchy -format vhdl -output ../netlist/fpmul_pipeline_regSignificands.vhdl
+
