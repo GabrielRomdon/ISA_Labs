@@ -25,7 +25,7 @@ analyze -library WORK -format vhdl {../fpmul_pipeline.vhd}
 
 elaborate FPmul -architecture pipeline
 
-set clk_period 2.3
+set clk_period 0.1
 create_clock -name MY_CLK -period $clk_period clk
 set_max_delay $clk_period -from [all_inputs]
 set_max_delay $clk_period -to [all_outputs]
@@ -37,8 +37,8 @@ set_load $OLOAD [all_outputs]
 
 compile -map_effort high
 
-report_timing > ./timings/timing.txt
-report_area > ./areas/area.txt
-
-write -hierarchy -format vhdl -output ./netlist/fpmul_pipeline_mbe_postsyn.vhdl
+#report_timing > ./timings/timing.txt
+#report_area > ./areas/area.txt
+#
+#write -hierarchy -format vhdl -output ./netlist/fpmul_pipeline_mbe_postsyn.vhdl
 

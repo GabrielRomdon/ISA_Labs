@@ -1,0 +1,194 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Sun Dec  5 18:38:48 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: I1/B_SIG_reg[15]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: I2/SIG_in_reg[19]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  I1/B_SIG_reg[15]/CK (DFF_X1)                            0.00       0.00 r
+  I1/B_SIG_reg[15]/Q (DFF_X1)                             0.13       0.13 r
+  I1/B_SIG[15] (FPmul_stage1)                             0.00       0.13 r
+  I2/B_SIG[15] (FPmul_stage2)                             0.00       0.13 r
+  I2/MBE_SIG/B[15] (MBE)                                  0.00       0.13 r
+  I2/MBE_SIG/encI_8/b[2] (ENC_10)                         0.00       0.13 r
+  I2/MBE_SIG/encI_8/U29/ZN (NAND3_X1)                     0.06       0.19 f
+  I2/MBE_SIG/encI_8/U21/Z (BUF_X2)                        0.06       0.24 f
+  I2/MBE_SIG/encI_8/U85/Z (MUX2_X1)                       0.07       0.31 f
+  I2/MBE_SIG/encI_8/U87/ZN (NAND3_X1)                     0.04       0.35 r
+  I2/MBE_SIG/encI_8/p[17] (ENC_10)                        0.00       0.35 r
+  I2/MBE_SIG/FA_C_0_6_31/B (FA_579)                       0.00       0.35 r
+  I2/MBE_SIG/FA_C_0_6_31/U4/ZN (XNOR2_X1)                 0.06       0.41 r
+  I2/MBE_SIG/FA_C_0_6_31/U3/ZN (XNOR2_X1)                 0.07       0.48 r
+  I2/MBE_SIG/FA_C_0_6_31/S (FA_579)                       0.00       0.48 r
+  I2/MBE_SIG/FA_C_1_3_31/B (FA_525)                       0.00       0.48 r
+  I2/MBE_SIG/FA_C_1_3_31/U3/ZN (AOI21_X1)                 0.04       0.52 f
+  I2/MBE_SIG/FA_C_1_3_31/U1/ZN (NOR2_X1)                  0.05       0.56 r
+  I2/MBE_SIG/FA_C_1_3_31/Co (FA_525)                      0.00       0.56 r
+  I2/MBE_SIG/FA_C_2_3_32/A (FA_402)                       0.00       0.56 r
+  I2/MBE_SIG/FA_C_2_3_32/U5/ZN (XNOR2_X1)                 0.06       0.63 r
+  I2/MBE_SIG/FA_C_2_3_32/U4/ZN (XNOR2_X1)                 0.06       0.69 r
+  I2/MBE_SIG/FA_C_2_3_32/S (FA_402)                       0.00       0.69 r
+  I2/MBE_SIG/FA_C_3_0_32/Ci (FA_320)                      0.00       0.69 r
+  I2/MBE_SIG/FA_C_3_0_32/U2/ZN (XNOR2_X1)                 0.07       0.76 r
+  I2/MBE_SIG/FA_C_3_0_32/U3/ZN (XNOR2_X1)                 0.06       0.82 r
+  I2/MBE_SIG/FA_C_3_0_32/S (FA_320)                       0.00       0.82 r
+  I2/MBE_SIG/FA_C_4_0_32/A (FA_218)                       0.00       0.82 r
+  I2/MBE_SIG/FA_C_4_0_32/U1/ZN (XNOR2_X1)                 0.06       0.88 r
+  I2/MBE_SIG/FA_C_4_0_32/U2/ZN (XNOR2_X1)                 0.06       0.95 r
+  I2/MBE_SIG/FA_C_4_0_32/S (FA_218)                       0.00       0.95 r
+  I2/MBE_SIG/FA_C_5_0_32/A (FA_160)                       0.00       0.95 r
+  I2/MBE_SIG/FA_C_5_0_32/U1/ZN (XNOR2_X1)                 0.06       1.01 r
+  I2/MBE_SIG/FA_C_5_0_32/U2/ZN (XNOR2_X1)                 0.07       1.08 r
+  I2/MBE_SIG/FA_C_5_0_32/S (FA_160)                       0.00       1.08 r
+  I2/MBE_SIG/P4_ADDER_0/A[32] (P4_ADDER_NBIT64_NBIT_PER_BLOCK8_NBLOCKS8)
+                                                          0.00       1.08 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/A[32] (SUM_GENERATOR_NBIT_PER_BLOCK8_NBLOCKS8)
+                                                          0.00       1.08 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/A[0] (carry_select_N8_4)
+                                                          0.00       1.08 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/A[0] (RCA_generic_N8_8)
+                                                          0.00       1.08 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_1/A (FA_64)
+                                                          0.00       1.08 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_1/U7/ZN (INV_X1)
+                                                          0.03       1.12 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_1/U1/ZN (OAI22_X1)
+                                                          0.05       1.17 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_1/Co (FA_64)
+                                                          0.00       1.17 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_2/Ci (FA_63)
+                                                          0.00       1.17 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_2/U4/ZN (INV_X1)
+                                                          0.03       1.20 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_2/U1/ZN (OAI22_X1)
+                                                          0.04       1.24 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_2/Co (FA_63)
+                                                          0.00       1.24 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_3/Ci (FA_62)
+                                                          0.00       1.24 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_3/U2/ZN (INV_X1)
+                                                          0.03       1.26 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_3/U1/ZN (OAI22_X1)
+                                                          0.05       1.32 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_3/Co (FA_62)
+                                                          0.00       1.32 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_4/Ci (FA_61)
+                                                          0.00       1.32 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_4/U5/ZN (INV_X1)
+                                                          0.03       1.34 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_4/U1/ZN (OAI22_X1)
+                                                          0.04       1.38 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_4/Co (FA_61)
+                                                          0.00       1.38 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_5/Ci (FA_60)
+                                                          0.00       1.38 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_5/U5/ZN (INV_X1)
+                                                          0.03       1.41 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_5/U1/ZN (OAI22_X1)
+                                                          0.04       1.45 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_5/Co (FA_60)
+                                                          0.00       1.45 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_6/Ci (FA_59)
+                                                          0.00       1.45 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_6/U5/ZN (INV_X1)
+                                                          0.03       1.47 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_6/U1/ZN (OAI22_X1)
+                                                          0.04       1.52 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_6/Co (FA_59)
+                                                          0.00       1.52 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_7/Ci (FA_58)
+                                                          0.00       1.52 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_7/U5/ZN (INV_X1)
+                                                          0.03       1.54 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_7/U1/ZN (OAI22_X1)
+                                                          0.05       1.59 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_7/Co (FA_58)
+                                                          0.00       1.59 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_8/Ci (FA_57)
+                                                          0.00       1.59 r
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_8/U4/ZN (XNOR2_X1)
+                                                          0.04       1.63 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/FAI_8/S (FA_57)
+                                                          0.00       1.63 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/ADDER0/S[7] (RCA_generic_N8_8)
+                                                          0.00       1.63 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/MUX/B[7] (MUX21_GENERIC_N8_4)
+                                                          0.00       1.63 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/MUX/U1/Z (MUX2_X1)
+                                                          0.07       1.70 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/MUX/Y[7] (MUX21_GENERIC_N8_4)
+                                                          0.00       1.70 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/CS_4/S[7] (carry_select_N8_4)
+                                                          0.00       1.70 f
+  I2/MBE_SIG/P4_ADDER_0/SUM_GEN_INST/S[39] (SUM_GENERATOR_NBIT_PER_BLOCK8_NBLOCKS8)
+                                                          0.00       1.70 f
+  I2/MBE_SIG/P4_ADDER_0/S[39] (P4_ADDER_NBIT64_NBIT_PER_BLOCK8_NBLOCKS8)
+                                                          0.00       1.70 f
+  I2/MBE_SIG/C[39] (MBE)                                  0.00       1.70 f
+  I2/SIG_in_reg[19]/D (DFF_X1)                            0.01       1.71 f
+  data arrival time                                                  1.71
+
+  clock MY_CLK (rise edge)                                1.82       1.82
+  clock network delay (ideal)                             0.00       1.82
+  clock uncertainty                                      -0.07       1.75
+  I2/SIG_in_reg[19]/CK (DFF_X1)                           0.00       1.75 r
+  library setup time                                     -0.04       1.71
+  data required time                                                 1.71
+  --------------------------------------------------------------------------
+  data required time                                                 1.71
+  data arrival time                                                 -1.71
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: I4/FP_Z_reg[0]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: FP_Z[0] (output port)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  I4/FP_Z_reg[0]/CK (DFF_X1)               0.00       0.00 r
+  I4/FP_Z_reg[0]/Q (DFF_X1)                0.09       0.09 r
+  I4/FP_Z[0] (FPmul_stage4)                0.00       0.09 r
+  FP_Z[0] (out)                            0.02       0.11 r
+  data arrival time                                   0.11
+
+  max_delay                                1.82       1.82
+  output external delay                    0.00       1.82
+  data required time                                  1.82
+  -----------------------------------------------------------
+  data required time                                  1.82
+  data arrival time                                  -0.11
+  -----------------------------------------------------------
+  slack (MET)                                         1.71
+
+
+1
