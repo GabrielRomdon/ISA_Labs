@@ -1,0 +1,99 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Sat Dec  4 13:25:51 2021
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: I1/A_SIG_reg[19]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: I2/prod_tmp_reg[46]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock MY_CLK (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  I1/A_SIG_reg[19]/CK (DFF_X1)             0.00       0.00 r
+  I1/A_SIG_reg[19]/Q (DFF_X1)              0.09       0.09 r
+  U3673/ZN (AND2_X1)                       0.05       0.14 r
+  U3088/ZN (NAND2_X1)                      0.05       0.19 f
+  U1890/Z (BUF_X2)                         0.07       0.25 f
+  U3789/Z (MUX2_X1)                        0.08       0.33 f
+  U3790/ZN (NAND2_X1)                      0.04       0.37 r
+  U3791/ZN (OAI21_X1)                      0.03       0.40 f
+  U3793/ZN (NAND2_X1)                      0.03       0.44 r
+  U3797/ZN (XNOR2_X1)                      0.06       0.50 r
+  U3802/ZN (XNOR2_X1)                      0.07       0.56 r
+  U3807/ZN (INV_X1)                        0.02       0.59 f
+  U3809/ZN (NAND2_X1)                      0.03       0.62 r
+  U3810/ZN (NAND2_X1)                      0.03       0.65 f
+  U1839/ZN (XNOR2_X1)                      0.07       0.72 r
+  U3831/ZN (XNOR2_X1)                      0.07       0.79 r
+  U2176/ZN (XNOR2_X1)                      0.07       0.85 r
+  U3842/ZN (XNOR2_X1)                      0.07       0.92 r
+  U3867/ZN (INV_X1)                        0.03       0.95 f
+  U3868/ZN (AND2_X1)                       0.05       1.00 f
+  U3870/ZN (NOR2_X2)                       0.05       1.05 r
+  U3871/ZN (NAND2_X1)                      0.04       1.09 f
+  U5264/ZN (AOI21_X2)                      0.06       1.15 r
+  U2213/ZN (NAND2_X1)                      0.04       1.19 f
+  U1738/ZN (NAND3_X1)                      0.03       1.22 r
+  U5544/ZN (OAI211_X1)                     0.04       1.26 f
+  I2/prod_tmp_reg[46]/D (DFF_X1)           0.01       1.27 f
+  data arrival time                                   1.27
+
+  clock MY_CLK (rise edge)                 1.38       1.38
+  clock network delay (ideal)              0.00       1.38
+  clock uncertainty                       -0.07       1.31
+  I2/prod_tmp_reg[46]/CK (DFF_X1)          0.00       1.31 r
+  library setup time                      -0.04       1.27
+  data required time                                  1.27
+  -----------------------------------------------------------
+  data required time                                  1.27
+  data arrival time                                  -1.27
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+  Startpoint: I4/FP_Z_reg[0]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: FP_Z[0] (output port)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  I4/FP_Z_reg[0]/CK (DFF_X1)               0.00       0.00 r
+  I4/FP_Z_reg[0]/Q (DFF_X1)                0.09       0.09 r
+  FP_Z[0] (out)                            0.02       0.11 r
+  data arrival time                                   0.11
+
+  max_delay                                1.38       1.38
+  output external delay                    0.00       1.38
+  data required time                                  1.38
+  -----------------------------------------------------------
+  data required time                                  1.38
+  data arrival time                                  -0.11
+  -----------------------------------------------------------
+  slack (MET)                                         1.27
+
+
+1
