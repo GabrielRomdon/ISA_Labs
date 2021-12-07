@@ -1,3 +1,8 @@
+###############################################################################################
+## Script for finding the worst case by using incremental compile and very tight constraints ##
+###############################################################################################
+
+####### Analyze files and elaborate top level
 analyze -library WORK -format vhdl {../../common/unpackfp_unpackfp.vhd}
 analyze -library WORK -format vhdl {../../common/packfp_packfp.vhd}
 analyze -library WORK -format vhdl {../../common/fpnormalize_fpnormalize.vhd}
@@ -25,7 +30,11 @@ analyze -library WORK -format vhdl {../fpmul_pipeline.vhd}
 
 elaborate FPmul -architecture pipeline
 
-set clk_period 0.1
+# Min clock period that will be the "unachievable constraint"
+set min_clk_period 0.1 
+
+####### First compilation using the "unachievable constraint"
+set clk_period $min_clk_period
 create_clock -name MY_CLK -period $clk_period clk
 set_max_delay $clk_period -from [all_inputs]
 set_max_delay $clk_period -to [all_outputs]
@@ -37,11 +46,12 @@ set_load $OLOAD [all_outputs]
 
 compile -map_effort high
 
-# Calculating new clk period
+####### Calculating new clk period based on the results of the first compilation
 set worst_path [get_timing_path]
 set slack [get_attribute $worst_path slack]
 set sorted_sl [lsort -real -increasing $slack]
 set worst_slack [lindex $sorted_sl 0]
+####### Set new clk period based on the previous calculation
 set clk_period_new [expr $clk_period-$worst_slack]
 create_clock -name MY_CLK -period $clk_period_new clk
 set_max_delay $clk_period_new -from [all_inputs]
@@ -52,14 +62,16 @@ set_clock_uncertainty 0.07 [get_clocks MY_CLK]
 set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
 set_load $OLOAD [all_outputs]
 
+####### Second compilation, for a constraint that is achievable
 compile -incremental_mapping
 
+####### Saving outputs
 report_timing > ./timings/timing_beforeRetime_noP4add.txt
 report_area > ./areas/area_beforeRetime_noP4add.txt
-
 write -hierarchy -format vhdl -output ./netlist/fpmul_pipeline_mbe_postsyn_beforeRetime_noP4add.vhdl
 
-set clk_period 0.1
+####### Reset the clock period to the "unachievable constraint" 
+set clk_period $min_clk_period
 create_clock -name MY_CLK -period $clk_period clk
 set_max_delay $clk_period -from [all_inputs]
 set_max_delay $clk_period -to [all_outputs]
@@ -69,14 +81,16 @@ set_clock_uncertainty 0.07 [get_clocks MY_CLK]
 set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
 set_load $OLOAD [all_outputs]
 
+####### Optimize registers using the unachievable constraint
 optimize_registers
 
-# Calculating new clk period
+####### Calculating new clk period based on the results of the first compilation
 set worst_path [get_timing_path]
 set slack [get_attribute $worst_path slack]
 set sorted_sl [lsort -real -increasing $slack]
 set worst_slack [lindex $sorted_sl 0]
 set clk_period_new [expr $clk_period-$worst_slack]
+####### Set new clk period based on the previous calculation
 create_clock -name MY_CLK -period $clk_period_new clk
 set_max_delay $clk_period_new -from [all_inputs]
 set_max_delay $clk_period_new -to [all_outputs]
@@ -86,10 +100,11 @@ set_clock_uncertainty 0.07 [get_clocks MY_CLK]
 set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
 set_load $OLOAD [all_outputs]
 
+####### Second compilation, for a constraint that is achievable
 compile -incremental_mapping
 
+####### Saving outputs
 report_timing > ./timings/timing_afterRetime_noP4add.txt
 report_area > ./areas/area_afterRetime_noP4add.txt
-
 write -hierarchy -format vhdl -output ./netlist/fpmul_pipeline_mbe_postsyn_afterRetime_noP4add.vhdl
 
