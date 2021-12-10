@@ -1,0 +1,53 @@
+analyze -library WORK -format vhdl {../common/unpackfp_unpackfp.vhd}
+analyze -library WORK -format vhdl {../common/packfp_packfp.vhd}
+analyze -library WORK -format vhdl {../common/fpnormalize_fpnormalize.vhd}
+analyze -library WORK -format vhdl {../common/fpround_fpround.vhd}
+analyze -library WORK -format vhdl {../multiplier/fpmul_stage1_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier/fpmul_stage2_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier/fpmul_stage3_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier/fpmul_stage4_struct.vhd}
+analyze -library WORK -format vhdl {../multiplier/fpmul_pipeline.vhd}
+
+elaborate FPmul -architecture pipeline
+
+# Min clock period that will be the "unachievable constraint"
+set min_clk_period 0.1 
+
+####### First compilation using the "unachievable constraint"
+set clk_period $min_clk_period
+create_clock -name MY_CLK -period $clk_period clk
+set_max_delay $clk_period -from [all_inputs]
+set_max_delay $clk_period -to [all_outputs]
+set_max_delay $clk_period -from [all_inputs] -to [all_outputs]
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+compile -map_effort high
+
+####### Calculating new clk period based on the results of the first compilation
+set worst_path [get_timing_path]
+set slack [get_attribute $worst_path slack]
+set sorted_sl [lsort -real -increasing $slack]
+set worst_slack [lindex $sorted_sl 0]
+####### Set new clk period based on the previous calculation
+set clk_period_new [expr $clk_period-$worst_slack]
+create_clock -name MY_CLK -period $clk_period_new clk
+set_max_delay $clk_period_new -from [all_inputs]
+set_max_delay $clk_period_new -to [all_outputs]
+set_max_delay $clk_period_new -from [all_inputs] -to [all_outputs]
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+####### Second compilation, for a constraint that is achievable
+compile -incremental_mapping
+
+####### Saving outputs
+report_timing > ./timings/timing.txt
+report_area > ./areas/area.txt
+report_resources > ./resources/resources.txt
+
+#exit
