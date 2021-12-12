@@ -72,8 +72,8 @@ ARCHITECTURE pipeline OF FPmul IS
    SIGNAL isZ_tab_stage1  : std_logic;
    SIGNAL isZ_tab_stage2  : std_logic;
 
-	signal FP_A_tmp : std_logic_vector (31 DOWNTO 0);
-    signal FP_B_tmp : std_logic_vector (31 DOWNTO 0);
+	signal FP_A_tmp : std_logic_vector (31 DOWNTO 0) := (others => '0');
+    signal FP_B_tmp : std_logic_vector (31 DOWNTO 0) := (others => '0');
 
    -- Component Declarations
    COMPONENT FPmul_stage1
@@ -148,6 +148,15 @@ ARCHITECTURE pipeline OF FPmul IS
    );
    END COMPONENT;
 
+	component REG_GENERIC is
+	generic(NBIT: integer:= 32);
+	port( 	CLK:	IN std_logic;
+			RST:	IN std_logic;   -- Low
+			EN:	IN std_logic;
+			DATA_IN: IN std_logic_vector(NBIT-1 downto 0);
+			DATA_OUT:	OUT std_logic_vector(NBIT-1 downto 0));
+	end component;
+
    -- Optional embedded configurations
    -- pragma synthesis_off
    FOR ALL : FPmul_stage1 USE ENTITY work.FPmul_stage1;
@@ -159,13 +168,13 @@ ARCHITECTURE pipeline OF FPmul IS
 
 BEGIN
 
-	INPUT_REG : process (clk)
-	begin
-		if rising_edge(clk) then
-			FP_A_tmp <= FP_A;
-			FP_B_tmp <= FP_B;
-		end if;
-	end process INPUT_REG;
+	input_reg_A : REG_GENERIC
+		generic map (32)
+		port map (CLK => clk, RST => '1', EN => '1', DATA_IN => FP_A, DATA_OUT => FP_A_tmp);
+
+	input_reg_B : REG_GENERIC
+		generic map (32)
+		port map (CLK => clk, RST => '1', EN => '1', DATA_IN => FP_B, DATA_OUT => FP_B_tmp);
 
    -- Instance port mappings.
    I1 : FPmul_stage1
