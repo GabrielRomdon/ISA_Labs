@@ -1,1 +1,1 @@
-/home/isa14_2021_2022/Desktop/ISA_Labs/Lab1/Files/VHDL_synth/look_ahead/netlist/IIR_look_ahead.sdc
+C:/home/isa14_2021_2022/Desktop/ISA_Labs/Lab1/Files/VHDL_synth/look_ahead/netlist/IIR_look_ahead.sdc

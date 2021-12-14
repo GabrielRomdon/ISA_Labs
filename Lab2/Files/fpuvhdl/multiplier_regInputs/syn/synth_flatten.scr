@@ -1,7 +1,8 @@
-analyze -library WORK -format vhdl {../common/unpackfp_unpackfp.vhd}
-analyze -library WORK -format vhdl {../common/packfp_packfp.vhd}
-analyze -library WORK -format vhdl {../common/fpnormalize_fpnormalize.vhd}
-analyze -library WORK -format vhdl {../common/fpround_fpround.vhd}
+analyze -library WORK -format vhdl {../../common/unpackfp_unpackfp.vhd}
+analyze -library WORK -format vhdl {../../common/packfp_packfp.vhd}
+analyze -library WORK -format vhdl {../../common/fpnormalize_fpnormalize.vhd}
+analyze -library WORK -format vhdl {../../common/fpround_fpround.vhd}
+
 analyze -library WORK -format vhdl {../multiplier/fpmul_stage1_struct.vhd}
 analyze -library WORK -format vhdl {../multiplier/fpmul_stage2_struct.vhd}
 analyze -library WORK -format vhdl {../multiplier/fpmul_stage3_struct.vhd}

@@ -1,7 +1,8 @@
-analyze -library WORK -format vhdl {../common/unpackfp_unpackfp.vhd}
-analyze -library WORK -format vhdl {../common/packfp_packfp.vhd}
-analyze -library WORK -format vhdl {../common/fpnormalize_fpnormalize.vhd}
-analyze -library WORK -format vhdl {../common/fpround_fpround.vhd}
+analyze -library WORK -format vhdl {../../common/unpackfp_unpackfp.vhd}
+analyze -library WORK -format vhdl {../../common/packfp_packfp.vhd}
+analyze -library WORK -format vhdl {../../common/fpnormalize_fpnormalize.vhd}
+analyze -library WORK -format vhdl {../../common/fpround_fpround.vhd}
+
 analyze -library WORK -format vhdl {../multiplier/fpmul_stage1_struct.vhd}
 analyze -library WORK -format vhdl {../multiplier/fpmul_stage2_struct.vhd}
 analyze -library WORK -format vhdl {../multiplier/fpmul_stage3_struct.vhd}
@@ -24,8 +25,6 @@ set_clock_uncertainty 0.07 [get_clocks MY_CLK]
 set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
 set_load $OLOAD [all_outputs]
 
-ungroup -all -flatten
-set_implementation DW02_mult/csa [find cell *mult*]
 compile -map_effort high
 
 ####### Calculating new clk period based on the results of the first compilation
@@ -45,13 +44,11 @@ set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
 set_load $OLOAD [all_outputs]
 
 ####### Second compilation, for a constraint that is achievable
-#ungroup -all -flatten
-#set_implementation DW02_mult/csa [find cell *mult*]
 compile -incremental_mapping
 
 ####### Saving outputs
-report_timing > ./timings/timing_csa.txt
-report_area > ./areas/area_csa.txt
-report_resources > ./resources/resources_csa.txt
+report_timing > ./timings/timing.txt
+report_area > ./areas/area.txt
+report_resources > ./resources/resources.txt
 
 #exit
